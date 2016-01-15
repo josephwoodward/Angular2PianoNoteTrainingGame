@@ -19,14 +19,15 @@ export class NoteCanvasComponent {
         this.canvasWidth = 900;
 
         // this.setupCanvas();
-        this.drawImage('app/components/note-canvas/stave_bg.png');
+        /*this.drawImage('app/components/note-canvas/stave_bg.png');*/
+        this.drawImage('app/components/note-canvas/crotchet_up.png');
     }
 
     private drawImage(url: string, x: number = 0, y: number = 0) {
         const image = new Image();
         image.src = url;
         image.onload = () => {
-            this.context.drawImage(image, x, y);
+            this.context.drawImage(image, x, y, 100, 150);
         };
     }
 

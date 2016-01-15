@@ -24,7 +24,8 @@ System.register(["angular2/core"], function(exports_1) {
                     this.context = this.canvas.getContext('2d');
                     this.canvasWidth = 900;
                     // this.setupCanvas();
-                    this.drawImage('app/components/note-canvas/stave_bg.png');
+                    /*this.drawImage('app/components/note-canvas/stave_bg.png');*/
+                    this.drawImage('app/components/note-canvas/crotchet_up.png');
                 }
                 NoteCanvasComponent.prototype.drawImage = function (url, x, y) {
                     var _this = this;
@@ -33,7 +34,7 @@ System.register(["angular2/core"], function(exports_1) {
                     var image = new Image();
                     image.src = url;
                     image.onload = function () {
-                        _this.context.drawImage(image, x, y);
+                        _this.context.drawImage(image, x, y, 100, 150);
                     };
                 };
                 NoteCanvasComponent.prototype.setupCanvas = function () {
