@@ -1,0 +1,8 @@
+:focus {
+    outline:none !important;
+}
+
+#gameWrapper {
+    margin: 0 auto;
+    width: 900px;
+}

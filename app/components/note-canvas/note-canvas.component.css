@@ -1,0 +1,6 @@
+#canvasWrapper {
+    width: 900px;
+    height: 500px;
+    border: 1px solid rgba(0,0,0,0.3);
+    margin-bottom: 40px;
+}
