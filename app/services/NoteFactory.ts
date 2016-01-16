@@ -1,0 +1,42 @@
+import {Injectable} from "angular2/core";
+import {MusicNote} from "../dataobjects/MusicNote";
+import {INotePosition} from "../contracts/INotePosition";
+import {INoteTransformer} from "../contracts/INoteTransformer";
+
+@Injectable()
+export class NoteFactory implements INoteTransformer {
+
+    private notePositions: INotePosition[];
+
+    constructor(){
+        var crotchetUp = "crotchet_up.png";
+        var crotchetDown = "crotchet_down.png";
+
+        this.notePositions = [
+            { key: 'g5', yPos: 86, keyNumber: 44, imageName: crotchetDown },
+            { key: 'f5', yPos: 100, keyNumber: 44, imageName: crotchetDown },
+            { key: 'e5', yPos: 112, keyNumber: 44, imageName: crotchetDown },
+            { key: 'd5', yPos: 126, keyNumber: 44, imageName: crotchetDown },
+            { key: 'c5', yPos: 138, keyNumber: 44, imageName: crotchetDown },
+            { key: 'b4', yPos: 70, keyNumber: 44, imageName: crotchetUp },
+            { key: 'a4', yPos: 83, keyNumber: 44, imageName: crotchetUp },
+            { key: 'g4', yPos: 95, keyNumber: 44, imageName: crotchetUp },
+            { key: 'f4', yPos: 109, keyNumber: 44, imageName: crotchetUp },
+            { key: 'e4', yPos: 121, keyNumber: 44, imageName: crotchetUp },
+            { key: 'd4', yPos: 135, keyNumber: 42, imageName: crotchetUp },
+            { key: 'c4', yPos: 163, keyNumber: 40, imageName: crotchetUp },
+            { key: 'b4', yPos: 163, keyNumber: 30, imageName: crotchetUp },
+        ];
+    }
+
+    generate(keyPosition : string): INotePosition {
+        var note : INotePosition;
+        for(var i = 0; i <= this.notePositions.length; i++){
+            if (this.notePositions[i].key === keyPosition){
+                return this.notePositions[i];
+            }
+        }
+
+        return <INotePosition>{};
+    }
+}
