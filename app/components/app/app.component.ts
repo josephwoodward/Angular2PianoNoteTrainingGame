@@ -18,4 +18,8 @@ import {NoteCanvasComponent} from "../note-canvas/note-canvas.component";
 
 export class AppComponent {
 
+    public chosenNote = "c4";
+
+    onSelect(hero: string) { this.chosenNote = hero; }
+
 }

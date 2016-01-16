@@ -28,7 +28,9 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
              */
             AppComponent = (function () {
                 function AppComponent() {
+                    this.chosenNote = "c4";
                 }
+                AppComponent.prototype.onSelect = function (hero) { this.chosenNote = hero; };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'piano-app',

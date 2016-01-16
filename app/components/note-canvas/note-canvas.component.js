@@ -50,7 +50,8 @@ System.register(["angular2/core", "../../services/NoteFactory"], function(export
                         selector: 'note-canvas',
                         styleUrls: ['app/components/note-canvas/note-canvas.component.css'],
                         templateUrl: 'app/components/note-canvas/note-canvas.component.html',
-                        providers: [NoteFactory_1.NoteFactory]
+                        providers: [NoteFactory_1.NoteFactory],
+                        inputs: ['selectedNote']
                     }), 
                     __metadata('design:paramtypes', [core_2.ElementRef, NoteFactory_1.NoteFactory])
                 ], NoteCanvasComponent);

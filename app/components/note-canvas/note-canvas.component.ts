@@ -8,7 +8,8 @@ import {INotePosition} from "../../contracts/INotePosition";
     selector: 'note-canvas',
     styleUrls: ['app/components/note-canvas/note-canvas.component.css'],
     templateUrl: 'app/components/note-canvas/note-canvas.component.html',
-    providers: [NoteFactory]
+    providers: [NoteFactory],
+    inputs: ['selectedNote']
 })
 
 export class NoteCanvasComponent implements OnInit {
