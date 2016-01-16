@@ -1,6 +1,10 @@
 <div id="p-wrapper">
     <ul id="piano">
-        <li><div class="anchor"></div></li>
+        <li *ngFor="#pianoKey of pianoKeys">
+            <div class="anchor" (click)="pressKey(pianoKey)"></div><span *ngIf="pianoKey.semiToneKeyId > 0"></span>
+        </li>
+
+        <!--<li><div class="anchor"></div></li>
         <li><div class="anchor"></div><span></span></li>
         <li><div class="anchor"></div><span></span></li>
         <li><div class="anchor"></div></li>
@@ -28,6 +32,6 @@
         <li><div class="anchor"></div><span></span></li>
         <li><div class="anchor"></div><span></span></li>
         <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div></li>
+        <li><div class="anchor"></div></li>-->
     </ul>
 </div>

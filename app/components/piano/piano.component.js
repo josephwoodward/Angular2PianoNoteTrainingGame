@@ -1,4 +1,4 @@
-System.register(["angular2/core", "events"], function(exports_1) {
+System.register(["angular2/core"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,15 +8,12 @@ System.register(["angular2/core", "events"], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, events_1;
+    var core_1;
     var PianoComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (events_1_1) {
-                events_1 = events_1_1;
             }],
         execute: function() {
             /*
@@ -24,10 +21,41 @@ System.register(["angular2/core", "events"], function(exports_1) {
              */
             PianoComponent = (function () {
                 function PianoComponent() {
-                    this.deleted = new events_1.EventEmitter();
+                    /*this.deleted = new EventEmitter();*/
+                    this.pianoKeys = [
+                        { keyId: 28, hasSemitone: false, semiToneKeyId: 0 },
+                        { keyId: 30, hasSemitone: true, semiToneKeyId: 31 },
+                        { keyId: 32, hasSemitone: true, semiToneKeyId: 0 },
+                        { keyId: 33, hasSemitone: false, semiToneKeyId: 34 },
+                        { keyId: 35, hasSemitone: true, semiToneKeyId: 36 },
+                        { keyId: 37, hasSemitone: true, semiToneKeyId: 38 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 34, hasSemitone: false, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: false, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 34, hasSemitone: false, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: false, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 34, hasSemitone: false, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: false, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: true, semiToneKeyId: 12 },
+                        { keyId: 33, hasSemitone: false, semiToneKeyId: 12 },
+                    ];
                 }
                 PianoComponent.prototype.pressKey = function (keyNumber) {
-                    this.deleted.emit("Boo" + keyNumber);
+                    alert(keyNumber.keyId);
                 };
                 PianoComponent = __decorate([
                     core_1.Component({
