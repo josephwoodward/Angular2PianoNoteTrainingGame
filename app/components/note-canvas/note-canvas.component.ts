@@ -3,6 +3,7 @@ import {ElementRef} from "angular2/core";
 import {NoteFactory} from "../../services/NoteFactory";
 import {OnInit} from "angular2/core";
 import {INotePosition} from "../../contracts/INotePosition";
+import {Renderer} from "angular2/core";
 
 @Component({
     selector: 'note-canvas',

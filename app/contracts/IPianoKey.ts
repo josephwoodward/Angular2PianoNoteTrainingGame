@@ -1,5 +1,4 @@
 export interface IPianoKey {
-    keyId: number;
-    hasSemitone: boolean;
-    semiToneKeyId: number;
+    whiteKeyId: number;
+    blackKeyId: number;
 }

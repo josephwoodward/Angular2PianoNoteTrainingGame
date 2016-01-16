@@ -1,7 +1,7 @@
 <div id="p-wrapper">
     <ul id="piano">
         <li *ngFor="#pianoKey of pianoKeys">
-            <div class="anchor" (click)="pressKey(pianoKey)"></div><span *ngIf="pianoKey.semiToneKeyId > 0"></span>
+            <div class="anchor" (click)="keyPress(pianoKey, 'white')"></div><span *ngIf="pianoKey.blackKeyId != 0" (click)="keyPress(pianoKey, 'black')"></span>
         </li>
 
         <!--<li><div class="anchor"></div></li>
