@@ -1,37 +1,7 @@
 <div id="p-wrapper">
     <ul id="piano">
         <li *ngFor="#pianoKey of pianoKeys">
-            <div class="anchor" (click)="keyPress(pianoKey, 'white')"></div><span *ngIf="pianoKey.blackKeyId != 0" (click)="keyPress(pianoKey, 'black')"></span>
+            <div class="anchor" (click)="keyPress(pianoKey.whiteKeyId, 'white')"></div><span *ngIf="pianoKey.blackKeyId != 0" (click)="keyPress(pianoKey.blackKeyId, 'black')"></span>
         </li>
-
-        <!--<li><div class="anchor"></div></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li class="middlec" (click)="pressKey('40')"><div class="anchor"></div></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div><span></span></li>
-        <li><div class="anchor"></div></li>-->
     </ul>
 </div>

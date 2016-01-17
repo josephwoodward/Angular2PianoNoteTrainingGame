@@ -41,6 +41,7 @@ ul#piano li {
     background:#aaa;
     width:40px;
     position:relative;
+    cursor: pointer;
 }
 
 ul#piano li a,ul#piano li div.anchor {
@@ -103,7 +104,7 @@ ul#piano li a:active:after,ul#piano li div.anchor:active:after {
 ul#piano li span {
     position:absolute;
     top:0px;
-    left:-12px;
+    right:-12px;
     width:20px;
     height:120px;
     background:#333;

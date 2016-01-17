@@ -21,41 +21,40 @@ System.register(["angular2/core"], function(exports_1) {
              */
             PianoComponent = (function () {
                 function PianoComponent() {
-                    /*this.deleted = new EventEmitter();*/
                     this.pianoKeys = [
-                        { whiteKeyId: 28, blackKeyId: 0 },
+                        { whiteKeyId: 16, blackKeyId: 17 },
+                        { whiteKeyId: 18, blackKeyId: 19 },
+                        { whiteKeyId: 20, blackKeyId: 0 },
+                        { whiteKeyId: 21, blackKeyId: 22 },
+                        { whiteKeyId: 23, blackKeyId: 24 },
+                        { whiteKeyId: 25, blackKeyId: 26 },
+                        { whiteKeyId: 27, blackKeyId: 0 },
+                        { whiteKeyId: 28, blackKeyId: 29 },
                         { whiteKeyId: 30, blackKeyId: 31 },
                         { whiteKeyId: 32, blackKeyId: 0 },
                         { whiteKeyId: 33, blackKeyId: 34 },
                         { whiteKeyId: 35, blackKeyId: 36 },
                         { whiteKeyId: 37, blackKeyId: 38 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 34, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 34, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 34, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
-                        { whiteKeyId: 33, blackKeyId: 12 },
+                        { whiteKeyId: 39, blackKeyId: 0 },
+                        { whiteKeyId: 40, blackKeyId: 41 },
+                        { whiteKeyId: 42, blackKeyId: 43 },
+                        { whiteKeyId: 44, blackKeyId: 0 },
+                        { whiteKeyId: 45, blackKeyId: 46 },
+                        { whiteKeyId: 47, blackKeyId: 48 },
+                        { whiteKeyId: 49, blackKeyId: 50 },
+                        { whiteKeyId: 51, blackKeyId: 0 },
+                        { whiteKeyId: 52, blackKeyId: 53 },
+                        { whiteKeyId: 54, blackKeyId: 55 },
+                        { whiteKeyId: 56, blackKeyId: 0 },
+                        { whiteKeyId: 57, blackKeyId: 58 },
+                        { whiteKeyId: 59, blackKeyId: 60 },
+                        { whiteKeyId: 61, blackKeyId: 62 },
+                        { whiteKeyId: 63, blackKeyId: 0 },
+                        { whiteKeyId: 64, blackKeyId: 0 } //c
                     ];
                 }
                 PianoComponent.prototype.keyPress = function (keyNumber, keyType) {
-                    alert(keyNumber.whiteKeyId + keyType);
+                    alert(keyNumber + " " + keyType);
                 };
                 PianoComponent = __decorate([
                     core_1.Component({

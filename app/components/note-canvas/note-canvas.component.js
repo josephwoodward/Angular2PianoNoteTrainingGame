@@ -41,9 +41,17 @@ System.register(["angular2/core", "../../services/NoteFactory"], function(export
                         _this.context.drawImage(image, x, y);
                     };
                 };
-                NoteCanvasComponent.prototype.ngOnInit = function () {
-                    var note = this.noteFactory.generate('g4');
+                NoteCanvasComponent.prototype.drawNote = function (note) {
                     this.drawImage('app/components/note-canvas/' + note.imageName, 450, note.yPos);
+                };
+                NoteCanvasComponent.prototype.ngOnInit = function () {
+                    var note = this.noteFactory.generate('e5');
+                    if (note) {
+                        this.drawNote(note);
+                    }
+                    else {
+                        alert('invalid note');
+                    }
                 };
                 NoteCanvasComponent = __decorate([
                     core_1.Component({

@@ -38,8 +38,16 @@ export class NoteCanvasComponent implements OnInit {
         };
     }
 
-    public ngOnInit() {
-        var note = this.noteFactory.generate('g4');
+    private drawNote(note: INotePosition ){
         this.drawImage('app/components/note-canvas/' + note.imageName, 450, note.yPos);
+    }
+
+    public ngOnInit() {
+        var note = this.noteFactory.generate('e5');
+        if (note) {
+            this.drawNote(note);
+        } else {
+            alert('invalid note');
+        }
     }
 }

@@ -1,5 +1,4 @@
 import {Injectable} from "angular2/core";
-import {MusicNote} from "../dataobjects/MusicNote";
 import {INotePosition} from "../contracts/INotePosition";
 import {INoteTransformer} from "../contracts/INoteTransformer";
 
