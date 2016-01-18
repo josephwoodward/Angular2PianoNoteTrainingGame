@@ -1,6 +1,7 @@
 import {Injectable} from "angular2/core";
 import {INotePosition} from "../contracts/INotePosition";
 import {INoteTransformer} from "../contracts/INoteTransformer";
+import {IKeyPressed} from "../contracts/IKeyPressed";
 
 @Injectable()
 export class NoteFactory implements INoteTransformer {
@@ -37,5 +38,9 @@ export class NoteFactory implements INoteTransformer {
         }
 
         return <INotePosition>{};
+    }
+
+    map(data: IKeyPressed){
+
     }
 }

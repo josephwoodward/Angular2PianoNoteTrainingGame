@@ -45,6 +45,8 @@ System.register(["angular2/core"], function(exports_1) {
                     }
                     return {};
                 };
+                NoteFactory.prototype.map = function (data) {
+                };
                 NoteFactory = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])

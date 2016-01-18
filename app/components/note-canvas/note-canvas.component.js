@@ -45,6 +45,10 @@ System.register(["angular2/core", "../../services/NoteFactory"], function(export
                 NoteCanvasComponent.prototype.drawNote = function (note) {
                     this.drawImage('app/components/note-canvas/' + note.imageName, 450, note.yPos);
                 };
+                NoteCanvasComponent.prototype.updateCanvas = function (keyData) {
+                    console.log(keyData); // {key: 30, keyType: "white"}
+                    alert(keyData.key + " " + keyData.keyType);
+                };
                 NoteCanvasComponent.prototype.ngOnInit = function () {
                     var note = this.noteFactory.generate('e5');
                     if (note) {

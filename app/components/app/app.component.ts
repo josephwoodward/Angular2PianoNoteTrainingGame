@@ -3,6 +3,8 @@ import {ViewEncapsulation} from "angular2/core";
 import {PianoComponent} from "../piano/piano.component";
 import {NoteCanvasComponent} from "../note-canvas/note-canvas.component";
 import {INotePosition} from "../../contracts/INotePosition";
+import {ViewChild} from "angular2/core";
+import {IKeyPressed} from "../../contracts/IKeyPressed";
 
 @Component({
     selector: 'piano-app',
@@ -17,11 +19,9 @@ import {INotePosition} from "../../contracts/INotePosition";
 })
 export class AppComponent {
 
-    public pressed: any;
+    @ViewChild(NoteCanvasComponent) noteCanvas: NoteCanvasComponent;
 
-    // This event is successfully called from PianoComponent
-    keyPressed(noteData) {
-        console.log(noteData); // {key: 30, keyType: "white"}
-        this.pressed = noteData;
+    keyPressed(noteData : IKeyPressed) {
+        this.noteCanvas.updateCanvas(noteData);
     }
 }

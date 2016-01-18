@@ -8,12 +8,13 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, piano_component_1, note_canvas_component_1;
+    var core_1, piano_component_1, note_canvas_component_1, core_2;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+                core_2 = core_1_1;
             },
             function (piano_component_1_1) {
                 piano_component_1 = piano_component_1_1;
@@ -25,11 +26,13 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
             AppComponent = (function () {
                 function AppComponent() {
                 }
-                // This event is successfully called from PianoComponent
                 AppComponent.prototype.keyPressed = function (noteData) {
-                    console.log(noteData); // {key: 30, keyType: "white"}
-                    this.pressed = noteData;
+                    this.noteCanvas.updateCanvas(noteData);
                 };
+                __decorate([
+                    core_2.ViewChild(note_canvas_component_1.NoteCanvasComponent), 
+                    __metadata('design:type', note_canvas_component_1.NoteCanvasComponent)
+                ], AppComponent.prototype, "noteCanvas", void 0);
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'piano-app',

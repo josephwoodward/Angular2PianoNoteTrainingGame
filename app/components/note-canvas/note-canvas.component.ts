@@ -5,6 +5,7 @@ import {OnInit} from "angular2/core";
 import {INotePosition} from "../../contracts/INotePosition";
 import {Renderer} from "angular2/core";
 import {Input} from "angular2/core";
+import {IKeyPressed} from "../../contracts/IKeyPressed";
 
 @Component({
     selector: 'note-canvas',
@@ -42,6 +43,11 @@ export class NoteCanvasComponent implements OnInit {
 
     private drawNote(note: INotePosition ){
         this.drawImage('app/components/note-canvas/' + note.imageName, 450, note.yPos);
+    }
+
+    public updateCanvas(keyData: IKeyPressed){
+        console.log(keyData); // {key: 30, keyType: "white"}
+        alert(keyData.key + " " + keyData.keyType);
     }
 
     public ngOnInit() {
