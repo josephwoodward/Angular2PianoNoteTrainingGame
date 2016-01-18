@@ -4,13 +4,13 @@ import {NoteFactory} from "../../services/NoteFactory";
 import {OnInit} from "angular2/core";
 import {INotePosition} from "../../contracts/INotePosition";
 import {Renderer} from "angular2/core";
+import {Input} from "angular2/core";
 
 @Component({
     selector: 'note-canvas',
     styleUrls: ['app/components/note-canvas/note-canvas.component.css'],
     templateUrl: 'app/components/note-canvas/note-canvas.component.html',
-    providers: [NoteFactory],
-    inputs: ['selectedNote']
+    providers: [NoteFactory]
 })
 
 export class NoteCanvasComponent implements OnInit {
@@ -22,6 +22,8 @@ export class NoteCanvasComponent implements OnInit {
 
     private CANVAS_HEIGHT = 500;
     private CANVAS_WIDTH = 900;
+
+    @Input() keyPressed : any;
 
     constructor(private element: ElementRef, private noteGenerator: NoteFactory) {
         this.canvas = this.element.nativeElement.querySelector('canvas');

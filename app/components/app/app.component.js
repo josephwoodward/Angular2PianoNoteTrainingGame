@@ -25,14 +25,16 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
             AppComponent = (function () {
                 function AppComponent() {
                 }
-                AppComponent.prototype.keyPressed = function (eventData) {
-                    console.log(eventData);
+                // This event is successfully called from PianoComponent
+                AppComponent.prototype.keyPressed = function (noteData) {
+                    console.log(noteData); // {key: 30, keyType: "white"}
+                    this.pressed = noteData;
                 };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'piano-app',
                         styleUrls: ['app/components/app/app.component.css'],
-                        templateUrl: 'app/components/app/app.component.html',
+                        template: "\n        <div id=\"gameWrapper\">\n            <note-canvas [keyPressed]=\"pressed\"></note-canvas>\n            <piano (key-pressed)=\"keyPressed($event)\"></piano>\n        </div>\n    ",
                         directives: [piano_component_1.PianoComponent, note_canvas_component_1.NoteCanvasComponent],
                     }), 
                     __metadata('design:paramtypes', [])

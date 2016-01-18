@@ -8,13 +8,14 @@ System.register(["angular2/core", "../../services/NoteFactory"], function(export
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, core_2, NoteFactory_1;
+    var core_1, core_2, NoteFactory_1, core_3;
     var NoteCanvasComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
                 core_2 = core_1_1;
+                core_3 = core_1_1;
             },
             function (NoteFactory_1_1) {
                 NoteFactory_1 = NoteFactory_1_1;
@@ -53,13 +54,16 @@ System.register(["angular2/core", "../../services/NoteFactory"], function(export
                         alert('invalid note');
                     }
                 };
+                __decorate([
+                    core_3.Input(), 
+                    __metadata('design:type', Object)
+                ], NoteCanvasComponent.prototype, "keyPressed", void 0);
                 NoteCanvasComponent = __decorate([
                     core_1.Component({
                         selector: 'note-canvas',
                         styleUrls: ['app/components/note-canvas/note-canvas.component.css'],
                         templateUrl: 'app/components/note-canvas/note-canvas.component.html',
-                        providers: [NoteFactory_1.NoteFactory],
-                        inputs: ['selectedNote']
+                        providers: [NoteFactory_1.NoteFactory]
                     }), 
                     __metadata('design:paramtypes', [core_2.ElementRef, NoteFactory_1.NoteFactory])
                 ], NoteCanvasComponent);

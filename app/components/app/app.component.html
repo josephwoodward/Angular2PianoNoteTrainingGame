@@ -1,4 +1,4 @@
 <div id="gameWrapper">
-    <note-canvas></note-canvas>
+    <note-canvas [keyPressed]="pressed"></note-canvas>
     <piano (key-pressed)="keyPressed($event)"></piano>
 </div>
