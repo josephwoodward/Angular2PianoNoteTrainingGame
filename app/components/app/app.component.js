@@ -8,13 +8,12 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, core_2, piano_component_1, note_canvas_component_1;
+    var core_1, piano_component_1, note_canvas_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-                core_2 = core_1_1;
             },
             function (piano_component_1_1) {
                 piano_component_1 = piano_component_1_1;
@@ -23,19 +22,15 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                 note_canvas_component_1 = note_canvas_component_1_1;
             }],
         execute: function() {
-            /*
-             Walkthrough https://angular.io/docs/ts/latest/tutorial/toh-pt2.html
-             */
             AppComponent = (function () {
                 function AppComponent() {
-                    this.chosenNote = "c4";
                 }
-                AppComponent.prototype.onSelect = function (hero) { this.chosenNote = hero; };
+                AppComponent.prototype.keyPressed = function (eventData) {
+                    console.log(eventData);
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'piano-app',
-                        encapsulation: core_2.ViewEncapsulation.Native,
-                        /*Style types: http://blog.thoughtram.io/angular/2015/06/25/styling-angular-2-components.html*/
                         styleUrls: ['app/components/app/app.component.css'],
                         templateUrl: 'app/components/app/app.component.html',
                         directives: [piano_component_1.PianoComponent, note_canvas_component_1.NoteCanvasComponent],

@@ -8,19 +8,19 @@ System.register(["angular2/core"], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, core_2, core_3;
     var PianoComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+                core_2 = core_1_1;
+                core_3 = core_1_1;
             }],
         execute: function() {
-            /*
-             Walkthrough https://angular.io/docs/ts/latest/tutorial/toh-pt2.html
-             */
             PianoComponent = (function () {
                 function PianoComponent() {
+                    this.keyPressed = new core_2.EventEmitter();
                     this.pianoKeys = [
                         { whiteKeyId: 16, blackKeyId: 17 },
                         { whiteKeyId: 18, blackKeyId: 19 },
@@ -54,8 +54,12 @@ System.register(["angular2/core"], function(exports_1) {
                     ];
                 }
                 PianoComponent.prototype.keyPress = function (keyNumber, keyType) {
-                    alert(keyNumber + " " + keyType);
+                    this.keyPressed.emit({ key: keyNumber, keyType: keyType });
                 };
+                __decorate([
+                    core_3.Output("key-pressed"), 
+                    __metadata('design:type', Object)
+                ], PianoComponent.prototype, "keyPressed", void 0);
                 PianoComponent = __decorate([
                     core_1.Component({
                         selector: 'piano',

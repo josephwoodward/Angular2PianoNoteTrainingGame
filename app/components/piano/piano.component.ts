@@ -1,23 +1,22 @@
 import {Component} from "angular2/core";
 import {ViewEncapsulation} from "angular2/core";
-import {EventEmitter} from "events";
 import {IPianoKey} from "../../contracts/IPianoKey";
-
-/*
- Walkthrough https://angular.io/docs/ts/latest/tutorial/toh-pt2.html
- */
+import {EventEmitter} from "angular2/core";
+import {Output} from "angular2/core";
 
 @Component({
     selector: 'piano',
     styleUrls: ['app/components/piano/piano.component.css'],
     templateUrl: 'app/components/piano/piano.component.html',
 })
-
 export class PianoComponent {
 
     public pianoKeys: IPianoKey[];
 
+    @Output("key-pressed") keyPressed = new EventEmitter();
+
     constructor(){
+
         this.pianoKeys = [
             { whiteKeyId: 16, blackKeyId: 17 }, //c
             { whiteKeyId: 18, blackKeyId: 19 },
@@ -52,7 +51,6 @@ export class PianoComponent {
     }
 
     keyPress(keyNumber: number, keyType: string) {
-        alert(keyNumber + " " + keyType);
+        this.keyPressed.emit({ key : keyNumber, keyType: keyType });
     }
-
 }
