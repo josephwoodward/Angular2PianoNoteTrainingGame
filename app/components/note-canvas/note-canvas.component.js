@@ -53,8 +53,6 @@ System.register(["angular2/core", "../../services/NoteFactory"], function(export
                     var note = this.noteFactory.keyToNoteConverter(keyData);
                     console.log(note);
                     this.drawNote(note);
-                    //console.log(keyData); // {key: 30, keyType: "white"}
-                    //alert(keyData.key + " " + keyData.keyType + " = " + note.keyNumber);
                 };
                 NoteCanvasComponent.prototype.ngOnInit = function () {
                     this.currentNote = this.noteFactory.generate('e5');

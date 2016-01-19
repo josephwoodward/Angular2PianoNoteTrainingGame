@@ -21,7 +21,7 @@ System.register(["angular2/core"], function(exports_1) {
                     var crotchetUp = "crotchet_up.png";
                     var crotchetDown = "crotchet_down.png";
                     this.notePositions = [
-                        { key: 'g5', yPos: 86, keyNumber: 58, imageName: crotchetDown },
+                        { key: 'g5', yPos: 86, keyNumber: 59, imageName: crotchetDown },
                         { key: 'f5', yPos: 100, keyNumber: 57, imageName: crotchetDown },
                         { key: 'e5', yPos: 112, keyNumber: 56, imageName: crotchetDown },
                         { key: 'd5', yPos: 126, keyNumber: 54, imageName: crotchetDown },
@@ -34,8 +34,11 @@ System.register(["angular2/core"], function(exports_1) {
                         { key: 'd4', yPos: 135, keyNumber: 42, imageName: crotchetUp },
                         { key: 'd4', yPos: 135, keyNumber: 41, imageName: crotchetUp },
                         { key: 'c4', yPos: 163, keyNumber: 40, imageName: crotchetUp },
-                        { key: 'b3', yPos: 190, keyNumber: 39, imageName: crotchetUp },
-                        { key: 'a3', yPos: 195, keyNumber: 39, imageName: crotchetUp },
+                        { key: 'b3', yPos: 271, keyNumber: 39, imageName: crotchetDown },
+                        { key: 'a3', yPos: 285, keyNumber: 37, imageName: crotchetDown },
+                        { key: 'g3', yPos: 297, keyNumber: 35, imageName: crotchetDown },
+                        { key: 'f3', yPos: 310, keyNumber: 33, imageName: crotchetDown },
+                        { key: 'e3', yPos: 323, keyNumber: 32, imageName: crotchetDown },
                     ];
                 }
                 NoteFactory.prototype.generate = function (keyPosition) {
