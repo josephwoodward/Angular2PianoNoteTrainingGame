@@ -24,8 +24,10 @@ export class NoteFactory implements INoteTransformer {
             { key: 'f4', yPos: 109, keyNumber: 45, imageName: crotchetUp },
             { key: 'e4', yPos: 121, keyNumber: 44, imageName: crotchetUp },
             { key: 'd4', yPos: 135, keyNumber: 42, imageName: crotchetUp },
+            { key: 'd4', yPos: 135, keyNumber: 41, imageName: crotchetUp },
             { key: 'c4', yPos: 163, keyNumber: 40, imageName: crotchetUp },
-            { key: 'b4', yPos: 163, keyNumber: 30, imageName: crotchetUp },
+            { key: 'b3', yPos: 190, keyNumber: 39, imageName: crotchetUp },
+            { key: 'a3', yPos: 195, keyNumber: 39, imageName: crotchetUp },
         ];
     }
 
@@ -36,13 +38,11 @@ export class NoteFactory implements INoteTransformer {
                 return this.notePositions[i];
             }
         }
-
         return <INotePosition>{};
     }
 
     keyToNoteConverter(data: IKeyPressed){
-        console.log(data);
-        var selectedNote;
+        console.log("key:" + data.key + " - keyType: " + data.keyType);
         for(var i = 0; i < this.notePositions.length; i++){
             if (this.notePositions[i].keyNumber === data.key){
                 return this.notePositions[i];

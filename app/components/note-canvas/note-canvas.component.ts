@@ -44,11 +44,11 @@ export class NoteCanvasComponent implements OnInit {
     }
 
     private drawNote(note: INotePosition ){
-
         this.context.globalCompositeOperation = 'destination-over';
-        this.context.clearRect(0, 0, 900, 500); // clear canvas
-
-        this.drawImage('app/components/note-canvas/' + note.imageName, 450, note.yPos);
+        this.context.clearRect(0, 0, 900, 500);
+        if (note) {
+            this.drawImage('app/components/note-canvas/' + note.imageName, 450, note.yPos);
+        }
     }
 
     public updateCanvas(keyData: IKeyPressed){

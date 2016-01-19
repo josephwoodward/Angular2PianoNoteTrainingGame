@@ -44,8 +44,10 @@ System.register(["angular2/core", "../../services/NoteFactory"], function(export
                 };
                 NoteCanvasComponent.prototype.drawNote = function (note) {
                     this.context.globalCompositeOperation = 'destination-over';
-                    this.context.clearRect(0, 0, 900, 500); // clear canvas
-                    this.drawImage('app/components/note-canvas/' + note.imageName, 450, note.yPos);
+                    this.context.clearRect(0, 0, 900, 500);
+                    if (note) {
+                        this.drawImage('app/components/note-canvas/' + note.imageName, 450, note.yPos);
+                    }
                 };
                 NoteCanvasComponent.prototype.updateCanvas = function (keyData) {
                     var note = this.noteFactory.keyToNoteConverter(keyData);
