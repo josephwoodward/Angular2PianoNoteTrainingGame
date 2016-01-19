@@ -43,16 +43,21 @@ System.register(["angular2/core", "../../services/NoteFactory"], function(export
                     };
                 };
                 NoteCanvasComponent.prototype.drawNote = function (note) {
+                    this.context.globalCompositeOperation = 'destination-over';
+                    this.context.clearRect(0, 0, 900, 500); // clear canvas
                     this.drawImage('app/components/note-canvas/' + note.imageName, 450, note.yPos);
                 };
                 NoteCanvasComponent.prototype.updateCanvas = function (keyData) {
-                    console.log(keyData); // {key: 30, keyType: "white"}
-                    alert(keyData.key + " " + keyData.keyType);
+                    var note = this.noteFactory.keyToNoteConverter(keyData);
+                    console.log(note);
+                    this.drawNote(note);
+                    //console.log(keyData); // {key: 30, keyType: "white"}
+                    //alert(keyData.key + " " + keyData.keyType + " = " + note.keyNumber);
                 };
                 NoteCanvasComponent.prototype.ngOnInit = function () {
-                    var note = this.noteFactory.generate('e5');
-                    if (note) {
-                        this.drawNote(note);
+                    this.currentNote = this.noteFactory.generate('e5');
+                    if (this.currentNote) {
+                        this.drawNote(this.currentNote);
                     }
                     else {
                         alert('invalid note');

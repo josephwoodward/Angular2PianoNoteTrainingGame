@@ -13,7 +13,7 @@ export class NoteFactory implements INoteTransformer {
         var crotchetDown = "crotchet_down.png";
 
         this.notePositions = [
-            { key: 'g5', yPos: 86, keyNumber: 49, imageName: crotchetDown },
+            { key: 'g5', yPos: 86, keyNumber: 58, imageName: crotchetDown },
             { key: 'f5', yPos: 100, keyNumber: 57, imageName: crotchetDown },
             { key: 'e5', yPos: 112, keyNumber: 56, imageName: crotchetDown },
             { key: 'd5', yPos: 126, keyNumber: 54, imageName: crotchetDown },
@@ -40,7 +40,13 @@ export class NoteFactory implements INoteTransformer {
         return <INotePosition>{};
     }
 
-    map(data: IKeyPressed){
-
+    keyToNoteConverter(data: IKeyPressed){
+        console.log(data);
+        var selectedNote;
+        for(var i = 0; i < this.notePositions.length; i++){
+            if (this.notePositions[i].keyNumber === data.key){
+                return this.notePositions[i];
+            }
+        }
     }
 }

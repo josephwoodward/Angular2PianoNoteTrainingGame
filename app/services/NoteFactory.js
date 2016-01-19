@@ -21,7 +21,7 @@ System.register(["angular2/core"], function(exports_1) {
                     var crotchetUp = "crotchet_up.png";
                     var crotchetDown = "crotchet_down.png";
                     this.notePositions = [
-                        { key: 'g5', yPos: 86, keyNumber: 49, imageName: crotchetDown },
+                        { key: 'g5', yPos: 86, keyNumber: 58, imageName: crotchetDown },
                         { key: 'f5', yPos: 100, keyNumber: 57, imageName: crotchetDown },
                         { key: 'e5', yPos: 112, keyNumber: 56, imageName: crotchetDown },
                         { key: 'd5', yPos: 126, keyNumber: 54, imageName: crotchetDown },
@@ -45,7 +45,14 @@ System.register(["angular2/core"], function(exports_1) {
                     }
                     return {};
                 };
-                NoteFactory.prototype.map = function (data) {
+                NoteFactory.prototype.keyToNoteConverter = function (data) {
+                    console.log(data);
+                    var selectedNote;
+                    for (var i = 0; i < this.notePositions.length; i++) {
+                        if (this.notePositions[i].keyNumber === data.key) {
+                            return this.notePositions[i];
+                        }
+                    }
                 };
                 NoteFactory = __decorate([
                     core_1.Injectable(), 

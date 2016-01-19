@@ -21,6 +21,8 @@ export class NoteCanvasComponent implements OnInit {
     private context: CanvasRenderingContext2D;
     private noteFactory: NoteFactory;
 
+    public currentNote;
+
     private CANVAS_HEIGHT = 500;
     private CANVAS_WIDTH = 900;
 
@@ -42,18 +44,25 @@ export class NoteCanvasComponent implements OnInit {
     }
 
     private drawNote(note: INotePosition ){
+
+        this.context.globalCompositeOperation = 'destination-over';
+        this.context.clearRect(0, 0, 900, 500); // clear canvas
+
         this.drawImage('app/components/note-canvas/' + note.imageName, 450, note.yPos);
     }
 
     public updateCanvas(keyData: IKeyPressed){
-        console.log(keyData); // {key: 30, keyType: "white"}
-        alert(keyData.key + " " + keyData.keyType);
+        var note = <INotePosition> this.noteFactory.keyToNoteConverter(keyData);
+        console.log(note);
+        this.drawNote(note);
+        //console.log(keyData); // {key: 30, keyType: "white"}
+        //alert(keyData.key + " " + keyData.keyType + " = " + note.keyNumber);
     }
 
     public ngOnInit() {
-        var note = this.noteFactory.generate('e5');
-        if (note) {
-            this.drawNote(note);
+        this.currentNote = this.noteFactory.generate('e5');
+        if (this.currentNote) {
+            this.drawNote(this.currentNote);
         } else {
             alert('invalid note');
         }
