@@ -1,3 +1,20 @@
+#beginButton {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 70px;
+    background-color: #efefef;
+    z-index: 999;
+    border: 0;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
 #canvasPanel {
     width: 1175px;
     background-color: #fff;

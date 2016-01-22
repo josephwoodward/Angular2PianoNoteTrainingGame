@@ -42,7 +42,8 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                     console.log("..........");
                     var note = this.noteFactory.keyToNoteConverter(noteData);
                     this.userIsCorrect = note.keyNumber == this.generatedNote.keyNumber;
-                    this.generateNote();
+                    if (this.userIsCorrect)
+                        this.generateNote();
                 };
                 AppComponent.prototype.generateNote = function () {
                     this.generatedNote = this.noteFactory.getRandomNote();
@@ -61,7 +62,7 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                     core_1.Component({
                         selector: 'piano-app',
                         styleUrls: ['app/components/app/app.component.css'],
-                        template: "\n        <div id=\"gameWrapper\">\n            <div id=\"canvasPanel\">\n                <note-canvas [keyPressed]=\"pressed\"></note-canvas>\n                <score [generatedNote]=\"generatedNote\" [userIsCorrect]=\"userIsCorrect\"></score>\n            </div>\n            <piano (key-pressed)=\"keyPressed($event)\"></piano>\n        </div>\n        <button (click)=\"begin()\">Begin</button>\n    ",
+                        template: "\n        <div id=\"gameWrapper\">\n            <div id=\"canvasPanel\">\n                <note-canvas [keyPressed]=\"pressed\"></note-canvas>\n                <button (click)=\"begin()\" id=\"beginButton\">Begin</button>\n                <score [generatedNote]=\"generatedNote\" [userIsCorrect]=\"userIsCorrect\"></score>\n            </div>\n            <piano (key-pressed)=\"keyPressed($event)\"></piano>\n        </div>\n    ",
                         directives: [piano_component_1.PianoComponent, note_canvas_component_1.NoteCanvasComponent, score_component_1.ScoreComponent],
                         providers: [NoteFactory_1.NoteFactory]
                     }), 

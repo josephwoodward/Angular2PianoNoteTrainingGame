@@ -17,11 +17,11 @@ import {ScoreComponent} from "../score/score.component";
         <div id="gameWrapper">
             <div id="canvasPanel">
                 <note-canvas [keyPressed]="pressed"></note-canvas>
+                <button (click)="begin()" id="beginButton">Begin</button>
                 <score [generatedNote]="generatedNote" [userIsCorrect]="userIsCorrect"></score>
             </div>
             <piano (key-pressed)="keyPressed($event)"></piano>
         </div>
-        <button (click)="begin()">Begin</button>
     `,
     directives: [PianoComponent, NoteCanvasComponent, ScoreComponent],
     providers: [NoteFactory]
@@ -45,7 +45,7 @@ export class AppComponent {
         console.log("..........");
         var note = <INotePosition>this.noteFactory.keyToNoteConverter(noteData);
         this.userIsCorrect = note.keyNumber == this.generatedNote.keyNumber;
-        this.generateNote();
+        if (this.userIsCorrect) this.generateNote();
     }
 
     private generateNote(){

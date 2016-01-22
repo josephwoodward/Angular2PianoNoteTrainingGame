@@ -30,7 +30,6 @@ export class NoteCanvasComponent {
         this.canvas = this.element.nativeElement.querySelector('canvas');
         this.context = this.canvas.getContext('2d');
         this.canvasWidth = 900;
-
     }
 
     private drawImage(url: string, x: number = 0, y: number = 0) {
