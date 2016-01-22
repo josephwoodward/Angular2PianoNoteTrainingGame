@@ -14,16 +14,11 @@ import {IKeyPressed} from "../../contracts/IKeyPressed";
     inputs: ['note']
 })
 
-export class NoteCanvasComponent implements OnInit {
-    ngOnInit():any {
-        return undefined;
-    }
+export class NoteCanvasComponent {
 
     private canvasWidth: number;
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;
-
-    public currentNote;
 
     private CANVAS_HEIGHT = 500;
     private CANVAS_WIDTH = 900;
@@ -57,13 +52,4 @@ export class NoteCanvasComponent implements OnInit {
     public updateCanvas(note: INotePosition){
         this.drawNote(note);
     }
-
-    /*public ngOnInit() {
-        /!*this.currentNote = this.noteFactory.getRandomNote();*!/
-        if (this.currentNote) {
-            this.drawNote(this.currentNote);
-        } else {
-            alert('invalid note');
-        }
-    }*/
 }

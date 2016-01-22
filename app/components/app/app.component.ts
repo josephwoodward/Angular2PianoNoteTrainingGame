@@ -6,20 +6,24 @@ import {INotePosition} from "../../contracts/INotePosition";
 import {ViewChild} from "angular2/core";
 import {IKeyPressed} from "../../contracts/IKeyPressed";
 import {NoteFactory} from "../../services/NoteFactory";
+import {ScoreComponent} from "../score/score.component";
+
+/*https://angular.io/docs/ts/latest/api/core/OnChanges-interface.html*/
 
 @Component({
     selector: 'piano-app',
     styleUrls: ['app/components/app/app.component.css'],
     template: `
         <div id="gameWrapper">
-            <note-canvas [keyPressed]="pressed"></note-canvas>
+            <div id="canvasPanel">
+                <note-canvas [keyPressed]="pressed"></note-canvas>
+                <score [generatedNote]="generatedNote" [userIsCorrect]="userIsCorrect"></score>
+            </div>
             <piano (key-pressed)="keyPressed($event)"></piano>
         </div>
         <button (click)="begin()">Begin</button>
-        <p style="color: #fff;" *ngIf="generatedNote">{{ generatedNote.key }}</p>
-        <p style="color: green; font-weight: bold;" [style.display]="userIsCorrect ? 'block' : 'none'" class="status"  [ngClass] = "{show: userIsCorrect}">Correct!</p>
     `,
-    directives: [PianoComponent, NoteCanvasComponent],
+    directives: [PianoComponent, NoteCanvasComponent, ScoreComponent],
     providers: [NoteFactory]
 })
 export class AppComponent {

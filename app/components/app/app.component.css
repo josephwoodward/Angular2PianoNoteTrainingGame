@@ -1,10 +1,16 @@
+#canvasPanel {
+    width: 1175px;
+    background-color: #fff;
+    position: relative;
+}
+
 :focus {
     outline:none !important;
 }
 
 #gameWrapper {
     margin: 0 auto;
-    width: 900px;
+    width: 1175px;
 }
 
 .status.hide {

@@ -27,9 +27,6 @@ System.register(["angular2/core"], function(exports_1) {
                     this.context = this.canvas.getContext('2d');
                     this.canvasWidth = 900;
                 }
-                NoteCanvasComponent.prototype.ngOnInit = function () {
-                    return undefined;
-                };
                 NoteCanvasComponent.prototype.drawImage = function (url, x, y) {
                     var _this = this;
                     if (x === void 0) { x = 0; }
