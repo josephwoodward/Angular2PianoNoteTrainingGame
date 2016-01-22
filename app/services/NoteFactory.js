@@ -41,6 +41,13 @@ System.register(["angular2/core"], function(exports_1) {
                         { key: 'e3', yPos: 323, keyNumber: 32, imageName: crotchetDown },
                     ];
                 }
+                NoteFactory.prototype.randomIntFromInterval = function (min, max) {
+                    return Math.floor(Math.random() * (max - min + 1) + min);
+                };
+                NoteFactory.prototype.getRandomNote = function () {
+                    var randomNumber = this.randomIntFromInterval(0, this.notePositions.length);
+                    return this.notePositions[randomNumber];
+                };
                 NoteFactory.prototype.generate = function (keyPosition) {
                     var note;
                     for (var i = 0; i <= this.notePositions.length; i++) {
@@ -51,7 +58,7 @@ System.register(["angular2/core"], function(exports_1) {
                     return {};
                 };
                 NoteFactory.prototype.keyToNoteConverter = function (data) {
-                    console.log("key:" + data.key + " - keyType: " + data.keyType);
+                    //console.log("key:" + data.key + " - keyType: " + data.keyType);
                     for (var i = 0; i < this.notePositions.length; i++) {
                         if (this.notePositions[i].keyNumber === data.key) {
                             return this.notePositions[i];

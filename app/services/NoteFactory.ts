@@ -34,6 +34,15 @@ export class NoteFactory implements INoteTransformer {
         ];
     }
 
+    private randomIntFromInterval(min, max) {
+        return Math.floor(Math.random()*(max-min+1)+min);
+    }
+
+    getRandomNote(){
+        var randomNumber = this.randomIntFromInterval(0, this.notePositions.length);
+        return this.notePositions[randomNumber];
+    }
+
     generate(keyPosition : string): INotePosition {
         var note : INotePosition;
         for(var i = 0; i <= this.notePositions.length; i++){
@@ -45,7 +54,7 @@ export class NoteFactory implements INoteTransformer {
     }
 
     keyToNoteConverter(data: IKeyPressed){
-        console.log("key:" + data.key + " - keyType: " + data.keyType);
+        //console.log("key:" + data.key + " - keyType: " + data.keyType);
         for(var i = 0; i < this.notePositions.length; i++){
             if (this.notePositions[i].keyNumber === data.key){
                 return this.notePositions[i];

@@ -6,3 +6,20 @@
     margin: 0 auto;
     width: 900px;
 }
+
+.status.hide {
+    opacity: 0;
+}
+
+.status.show {
+    opacity: 1;
+}
+
+.status {
+    color: #FFFFFF;
+    text-align: center;
+    -webkit-transition: opacity 3s ease-in-out;
+    -moz-transition: opacity 3s ease-in-out;
+    -ms-transition: opacity 3s ease-in-out;
+    -o-transition: opacity 3s ease-in-out;
+}
