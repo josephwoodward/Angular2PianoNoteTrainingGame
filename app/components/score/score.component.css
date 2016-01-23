@@ -1,0 +1,48 @@
+.score-wrapper {
+    width: 280px;
+    height: 530px;
+    background-color: #fff;
+    position: absolute;
+    top: -5px;
+    right: 0;
+    padding-top: 70px;
+    -webkit-box-shadow: -1px 0px 5px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 0px 5px -2px rgba(0,0,0,0.75);
+    box-shadow: -1px 0px 5px -2px rgba(0,0,0,0.75);
+    z-index: 10;
+}
+
+.score-wrapper__content {
+    padding: 20px;
+}
+
+.score-wrapper__content p {
+    margin: 0 0 20px;
+}
+
+.successfully-saved.hide-opacity {
+    opacity: 0;
+}
+
+.successfully-saved {
+    color: #FFFFFF;
+    text-align: center;
+    -webkit-transition: opacity 3s ease-in-out;
+    -moz-transition: opacity 3s ease-in-out;
+    -ms-transition: opacity 3s ease-in-out;
+    -o-transition: opacity 3s ease-in-out;
+    opacity: 1;
+}
+
+.score-wrapper__label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.score-wrapper__label--success {
+    color: green;
+}
+
+.score-wrapper__label--wrong {
+    color: red;
+}

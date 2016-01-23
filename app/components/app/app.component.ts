@@ -17,8 +17,8 @@ import {ScoreComponent} from "../score/score.component";
         <div id="gameWrapper">
             <div id="canvasPanel">
                 <note-canvas [keyPressed]="pressed"></note-canvas>
-                <button (click)="begin()" id="beginButton">Begin</button>
-                <score [generatedNote]="generatedNote" [userIsCorrect]="userIsCorrect"></score>
+                <button (click)="begin()" id="beginButton">{{ buttonLabel }}</button>
+                <score [generatedNote]="generatedNote" [userIsCorrect]="userIsCorrect" [gameIsStarted]="gameIsStarted"></score>
             </div>
             <piano (key-pressed)="keyPressed($event)"></piano>
         </div>
@@ -30,12 +30,16 @@ export class AppComponent {
 
     private noteFactory: NoteFactory;
     public generatedNote: INotePosition;
-    public userIsCorrect: boolean;
+    public userIsCorrect: any;
+    public gameIsStarted: boolean;
+    public buttonLabel: string;
 
     @ViewChild(NoteCanvasComponent) noteCanvas: NoteCanvasComponent;
 
     constructor(private noteGenerator: NoteFactory){
         this.noteFactory = noteGenerator;
+        this.userIsCorrect = null;
+        this.buttonLabel = "Click to begin";
     }
 
     keyPressed(noteData : IKeyPressed) {
@@ -56,6 +60,8 @@ export class AppComponent {
     }
 
     begin(){
+        this.gameIsStarted = true;
+        this.buttonLabel = "Click to stop";
         this.generateNote();
     }
 }

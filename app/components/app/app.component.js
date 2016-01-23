@@ -34,6 +34,8 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                 function AppComponent(noteGenerator) {
                     this.noteGenerator = noteGenerator;
                     this.noteFactory = noteGenerator;
+                    this.userIsCorrect = null;
+                    this.buttonLabel = "Click to begin";
                 }
                 AppComponent.prototype.keyPressed = function (noteData) {
                     // Logic to work out if user input is correct
@@ -52,6 +54,8 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                     console.log(this.generatedNote);
                 };
                 AppComponent.prototype.begin = function () {
+                    this.gameIsStarted = true;
+                    this.buttonLabel = "Click to stop";
                     this.generateNote();
                 };
                 __decorate([
@@ -62,7 +66,7 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                     core_1.Component({
                         selector: 'piano-app',
                         styleUrls: ['app/components/app/app.component.css'],
-                        template: "\n        <div id=\"gameWrapper\">\n            <div id=\"canvasPanel\">\n                <note-canvas [keyPressed]=\"pressed\"></note-canvas>\n                <button (click)=\"begin()\" id=\"beginButton\">Begin</button>\n                <score [generatedNote]=\"generatedNote\" [userIsCorrect]=\"userIsCorrect\"></score>\n            </div>\n            <piano (key-pressed)=\"keyPressed($event)\"></piano>\n        </div>\n    ",
+                        template: "\n        <div id=\"gameWrapper\">\n            <div id=\"canvasPanel\">\n                <note-canvas [keyPressed]=\"pressed\"></note-canvas>\n                <button (click)=\"begin()\" id=\"beginButton\">{{ buttonLabel }}</button>\n                <score [generatedNote]=\"generatedNote\" [userIsCorrect]=\"userIsCorrect\" [gameIsStarted]=\"gameIsStarted\"></score>\n            </div>\n            <piano (key-pressed)=\"keyPressed($event)\"></piano>\n        </div>\n    ",
                         directives: [piano_component_1.PianoComponent, note_canvas_component_1.NoteCanvasComponent, score_component_1.ScoreComponent],
                         providers: [NoteFactory_1.NoteFactory]
                     }), 
