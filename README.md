@@ -3,4 +3,4 @@
 Angular 2 based music notation sight reading game.
 
 ![alt text][preview]
-[preview]: http://josephwoodward.co.uk/content/editorImages/images/pianogame.png
+[preview]: http://josephwoodward.co.uk/Content/EditorImages/images/angular2_notetraininggame.png
