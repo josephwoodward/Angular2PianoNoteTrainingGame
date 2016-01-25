@@ -20,6 +20,18 @@
     margin: 0 0 20px;
 }
 
+/* Correct/Incorrect notice */
+
+.score-notice {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.score-notice p {
+    margin: 0;
+}
+
 .successfully-saved.hide-opacity {
     opacity: 0;
 }
@@ -37,12 +49,14 @@
 .score-wrapper__label {
     font-size: 18px;
     font-weight: bold;
+    padding: 10px;
+    color: #fff;
 }
 
 .score-wrapper__label--success {
-    color: green;
+    background-color: green;
 }
 
 .score-wrapper__label--wrong {
-    color: red;
+    background-color: red;
 }

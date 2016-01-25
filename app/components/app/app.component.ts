@@ -16,9 +16,9 @@ import {ScoreComponent} from "../score/score.component";
     template: `
         <div id="gameWrapper">
             <div id="canvasPanel">
+                <score [generatedNote]="generatedNote" [userIsCorrect]="userIsCorrect" [gameIsStarted]="gameIsStarted"></score>
                 <note-canvas [keyPressed]="pressed"></note-canvas>
                 <button (click)="begin()" id="beginButton">{{ buttonLabel }}</button>
-                <score [generatedNote]="generatedNote" [userIsCorrect]="userIsCorrect" [gameIsStarted]="gameIsStarted"></score>
             </div>
             <piano (key-pressed)="keyPressed($event)"></piano>
         </div>

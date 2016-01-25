@@ -66,7 +66,7 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                     core_1.Component({
                         selector: 'piano-app',
                         styleUrls: ['app/components/app/app.component.css'],
-                        template: "\n        <div id=\"gameWrapper\">\n            <div id=\"canvasPanel\">\n                <note-canvas [keyPressed]=\"pressed\"></note-canvas>\n                <button (click)=\"begin()\" id=\"beginButton\">{{ buttonLabel }}</button>\n                <score [generatedNote]=\"generatedNote\" [userIsCorrect]=\"userIsCorrect\" [gameIsStarted]=\"gameIsStarted\"></score>\n            </div>\n            <piano (key-pressed)=\"keyPressed($event)\"></piano>\n        </div>\n    ",
+                        template: "\n        <div id=\"gameWrapper\">\n            <div id=\"canvasPanel\">\n                <score [generatedNote]=\"generatedNote\" [userIsCorrect]=\"userIsCorrect\" [gameIsStarted]=\"gameIsStarted\"></score>\n                <note-canvas [keyPressed]=\"pressed\"></note-canvas>\n                <button (click)=\"begin()\" id=\"beginButton\">{{ buttonLabel }}</button>\n            </div>\n            <piano (key-pressed)=\"keyPressed($event)\"></piano>\n        </div>\n    ",
                         directives: [piano_component_1.PianoComponent, note_canvas_component_1.NoteCanvasComponent, score_component_1.ScoreComponent],
                         providers: [NoteFactory_1.NoteFactory]
                     }), 
