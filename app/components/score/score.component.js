@@ -21,19 +21,31 @@ System.register(["angular2/core", "angular2/common"], function(exports_1) {
         execute: function() {
             ScoreComponent = (function () {
                 function ScoreComponent() {
+                    this.result = [];
+                    this.correctTotal = 0;
+                    this.incorrectTotal = 0;
                 }
                 ScoreComponent.prototype.ngOnChanges = function (changes) {
-                    console.log(changes);
-                    if (!changes.userIsCorrect)
+                    debugger;
+                    if (changes.userIsCorrect === undefined)
                         return;
-                    this.correctMessage = (changes.userIsCorrect.currentValue) ? "Correct!2" : "Incorrect, try again...";
+                    if (changes.userIsCorrect.currentValue != null) {
+                        if (changes.userIsCorrect.currentValue === true) {
+                            this.result.push({ expected: "1", actual: "2" });
+                            this.correctTotal++;
+                        }
+                        else {
+                            this.result.push({ expected: "1", actual: "2" });
+                            this.incorrectTotal++;
+                        }
+                    }
                 };
                 ScoreComponent = __decorate([
                     core_1.Component({
                         selector: 'score',
                         styleUrls: ['app/components/score/score.component.css'],
                         directives: [common_1.NgClass],
-                        template: "\n    <div *ngIf=\"gameIsStarted && userIsCorrect != null\" class=\"score-notice\">\n        <p class=\"score-wrapper__label score-wrapper__label--wrong\" [style.display]=\"!userIsCorrect ? 'block' : 'none'\">Incorrect, try again...</p>\n        <p class=\"score-wrapper__label score-wrapper__label--success\" [style.display]=\"userIsCorrect ? 'block' : 'none'\">Correct!</p>\n        <!--<p style=\"color: #999;\" *ngIf=\"generatedNote\">{{ generatedNote?.key }}</p>-->\n        <!--<p class=\"score-wrapper__label\" [ngClass]=\"{'score-wrapper__label&#45;&#45;success': userIsCorrect, 'score-wrapper__label&#45;&#45;wrong': !userIsCorrect }\">{{ correctMessage }}</p>-->\n    </div>\n    <div class=\"score-wrapper\">\n        <div class=\"score-wrapper__content\">\n        </div>\n    </div>\n    ",
+                        template: "\n    <div *ngIf=\"gameIsStarted && userIsCorrect != null\" class=\"score-notice\">\n        <p class=\"score-wrapper__label score-wrapper__label--wrong\" [style.display]=\"!userIsCorrect ? 'block' : 'none'\">Incorrect, try again...</p>\n        <p class=\"score-wrapper__label score-wrapper__label--success\" [style.display]=\"userIsCorrect ? 'block' : 'none'\">Correct!</p>\n        <!--<p style=\"color: #999;\" *ngIf=\"generatedNote\">{{ generatedNote?.key }}</p>-->\n        <!--<p class=\"score-wrapper__label\" [ngClass]=\"{'score-wrapper__label&#45;&#45;success': userIsCorrect, 'score-wrapper__label&#45;&#45;wrong': !userIsCorrect }\">{{ correctMessage }}</p>-->\n    </div>\n    <div class=\"score-wrapper\">\n        <div class=\"score-wrapper__content\">\n        <p>Correct: {{ correctTotal }}</p>\n        <p>Incorrect: {{ incorrectTotal }}</p>\n        </div>\n    </div>\n    ",
                         inputs: ['generatedNote', 'userIsCorrect', 'gameIsStarted']
                     }), 
                     __metadata('design:paramtypes', [])

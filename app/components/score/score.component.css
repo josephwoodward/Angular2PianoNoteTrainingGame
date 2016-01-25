@@ -51,6 +51,7 @@
     font-weight: bold;
     padding: 10px;
     color: #fff;
+    border-radius: 3px;
 }
 
 .score-wrapper__label--success {

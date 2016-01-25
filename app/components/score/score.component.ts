@@ -9,6 +9,7 @@ import {NoteFactory} from "../../services/NoteFactory";
 import {OnChanges} from "angular2/core";
 import {getTypeNameForDebugging} from "angular2/src/facade/lang";
 import {NgClass} from "angular2/common";
+import {IUserResultItem} from "../../contracts/IUserResultItem";
 
 @Component({
     selector: 'score',
@@ -23,6 +24,8 @@ import {NgClass} from "angular2/common";
     </div>
     <div class="score-wrapper">
         <div class="score-wrapper__content">
+        <p>Correct: {{ correctTotal }}</p>
+        <p>Incorrect: {{ incorrectTotal }}</p>
         </div>
     </div>
     `,
@@ -32,15 +35,28 @@ export class ScoreComponent implements OnChanges {
 
     public correctMessage: string;
     public tester: boolean;
+    public correctTotal: number;
+    public incorrectTotal: number;
+    public result: IUserResultItem[] = [];
 
     constructor(){
-
+        this.correctTotal = 0;
+        this.incorrectTotal = 0;
     }
 
     ngOnChanges(changes:any) {
-        console.log(changes);
-        if (!changes.userIsCorrect) return;
-        this.correctMessage = (changes.userIsCorrect.currentValue) ? "Correct!2" : "Incorrect, try again...";
+        debugger;
+        if (changes.userIsCorrect === undefined) return;
+
+        if (changes.userIsCorrect.currentValue != null) {
+            if (changes.userIsCorrect.currentValue === true){
+                this.result.push({ expected: "1", actual: "2" });
+                this.correctTotal++;
+            } else {
+                this.result.push({ expected: "1", actual: "2" });
+                this.incorrectTotal++;
+            }
+        }
     }
 
 }
