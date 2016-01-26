@@ -13,6 +13,7 @@ import {IUserResultItem} from "../../contracts/IUserResultItem";
 import {ScoreTracker} from "../../services/ScoreTracker";
 import {NgFor} from "angular2/common";
 import {OnInit} from 'angular2/core';
+import 'rxjs/add/operator/filter';
 
 @Component({
     selector: 'score',
@@ -55,20 +56,26 @@ export class ScoreComponent implements OnChanges, OnInit {
     }
 
     ngOnInit() {
-        this.scoreTracker.todos$.subscribe(note => {
-            this.notes.push(note[note.length - 1]);
-        });
-    }
-
-    ngOnChanges(changes:any) {
-        if (changes.userIsCorrect === undefined) return;
-
-        if (changes.userIsCorrect.currentValue != null) {
-            if (changes.userIsCorrect.currentValue === true){
+        var note : IUserResultItem;
+        this.scoreTracker.todos$.subscribe(notes => {
+            note = <IUserResultItem>notes[notes.length - 1];
+            this.notes.push(note);
+            if (note.correct) {
                 this.correctTotal++;
             } else {
                 this.incorrectTotal++;
             }
-        }
+        });
+
+        var res = this.scoreTracker.todos$.filter(function(x){
+            debugger;
+            alert('here');
+            console.log(x);
+            return true;
+        });
+        alert(res);
+    }
+
+    ngOnChanges(changes:any) {
     }
 }

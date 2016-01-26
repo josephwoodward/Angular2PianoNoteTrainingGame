@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/common", "../../services/ScoreTracker"], function(exports_1) {
+System.register(["angular2/core", "angular2/common", "../../services/ScoreTracker", 'rxjs/add/operator/filter'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -21,7 +21,8 @@ System.register(["angular2/core", "angular2/common", "../../services/ScoreTracke
             },
             function (ScoreTracker_1_1) {
                 ScoreTracker_1 = ScoreTracker_1_1;
-            }],
+            },
+            function (_1) {}],
         execute: function() {
             ScoreComponent = (function () {
                 function ScoreComponent(tracker) {
@@ -33,21 +34,26 @@ System.register(["angular2/core", "angular2/common", "../../services/ScoreTracke
                 }
                 ScoreComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    this.scoreTracker.todos$.subscribe(function (note) {
-                        _this.notes.push(note[note.length - 1]);
-                    });
-                };
-                ScoreComponent.prototype.ngOnChanges = function (changes) {
-                    if (changes.userIsCorrect === undefined)
-                        return;
-                    if (changes.userIsCorrect.currentValue != null) {
-                        if (changes.userIsCorrect.currentValue === true) {
-                            this.correctTotal++;
+                    var note;
+                    this.scoreTracker.todos$.subscribe(function (notes) {
+                        note = notes[notes.length - 1];
+                        _this.notes.push(note);
+                        if (note.correct) {
+                            _this.correctTotal++;
                         }
                         else {
-                            this.incorrectTotal++;
+                            _this.incorrectTotal++;
                         }
-                    }
+                    });
+                    var res = this.scoreTracker.todos$.filter(function (x) {
+                        debugger;
+                        alert('here');
+                        console.log(x);
+                        return true;
+                    });
+                    alert(res);
+                };
+                ScoreComponent.prototype.ngOnChanges = function (changes) {
                 };
                 ScoreComponent = __decorate([
                     core_1.Component({
