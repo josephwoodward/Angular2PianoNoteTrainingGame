@@ -7,6 +7,7 @@ import {ViewChild} from "angular2/core";
 import {IKeyPressed} from "../../contracts/IKeyPressed";
 import {NoteFactory} from "../../services/NoteFactory";
 import {ScoreComponent} from "../score/score.component";
+import {ScoreTracker} from "../../services/ScoreTracker";
 
 /*https://angular.io/docs/ts/latest/api/core/OnChanges-interface.html*/
 
@@ -24,11 +25,12 @@ import {ScoreComponent} from "../score/score.component";
         </div>
     `,
     directives: [PianoComponent, NoteCanvasComponent, ScoreComponent],
-    providers: [NoteFactory]
+    providers: [NoteFactory, ScoreTracker]
 })
 export class AppComponent {
 
     private noteFactory: NoteFactory;
+    private scoreTracker: ScoreTracker;
     public generatedNote: INotePosition;
     public userIsCorrect: any;
     public gameIsStarted: boolean;
@@ -36,26 +38,28 @@ export class AppComponent {
 
     @ViewChild(NoteCanvasComponent) noteCanvas: NoteCanvasComponent;
 
-    constructor(private noteGenerator: NoteFactory){
+    constructor(private noteGenerator: NoteFactory, private tracker: ScoreTracker){
         this.noteFactory = noteGenerator;
+        this.scoreTracker = tracker;
         this.userIsCorrect = null;
         this.buttonLabel = "Click to begin";
     }
 
     keyPressed(noteData : IKeyPressed) {
-        // Logic to work out if user input is correct
-        console.log("User Input:")
-        console.log(noteData);
-        console.log("..........");
         var note = <INotePosition>this.noteFactory.keyToNoteConverter(noteData);
-        this.userIsCorrect = note.keyNumber == this.generatedNote.keyNumber;
-        if (this.userIsCorrect) this.generateNote();
+
+        this.userIsCorrect = note.keyNumber === this.generatedNote.keyNumber;
+        this.scoreTracker.updateScore({ actualKeyNumber: note.keyNumber, expectedKeyNumber: this.generatedNote.keyNumber, correct: this.userIsCorrect });
+
+        if (this.userIsCorrect) {
+            this.generateNote();
+        }
     }
 
     private generateNote(){
         this.generatedNote = <INotePosition>this.noteFactory.getRandomNote();
         this.noteCanvas.updateCanvas(this.generatedNote);
-        console.log("Note Drawn, awaiting input:")
+        console.log("Note generated:")
         console.log(this.generatedNote)
     }
 

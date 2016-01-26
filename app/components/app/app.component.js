@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../piano/piano.component", "../note-canvas/note-canvas.component", "../../services/NoteFactory", "../score/score.component"], function(exports_1) {
+System.register(["angular2/core", "../piano/piano.component", "../note-canvas/note-canvas.component", "../../services/NoteFactory", "../score/score.component", "../../services/ScoreTracker"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, piano_component_1, note_canvas_component_1, core_2, NoteFactory_1, score_component_1;
+    var core_1, piano_component_1, note_canvas_component_1, core_2, NoteFactory_1, score_component_1, ScoreTracker_1;
     var AppComponent;
     return {
         setters:[
@@ -27,30 +27,33 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
             },
             function (score_component_1_1) {
                 score_component_1 = score_component_1_1;
+            },
+            function (ScoreTracker_1_1) {
+                ScoreTracker_1 = ScoreTracker_1_1;
             }],
         execute: function() {
             /*https://angular.io/docs/ts/latest/api/core/OnChanges-interface.html*/
             AppComponent = (function () {
-                function AppComponent(noteGenerator) {
+                function AppComponent(noteGenerator, tracker) {
                     this.noteGenerator = noteGenerator;
+                    this.tracker = tracker;
                     this.noteFactory = noteGenerator;
+                    this.scoreTracker = tracker;
                     this.userIsCorrect = null;
                     this.buttonLabel = "Click to begin";
                 }
                 AppComponent.prototype.keyPressed = function (noteData) {
-                    // Logic to work out if user input is correct
-                    console.log("User Input:");
-                    console.log(noteData);
-                    console.log("..........");
                     var note = this.noteFactory.keyToNoteConverter(noteData);
-                    this.userIsCorrect = note.keyNumber == this.generatedNote.keyNumber;
-                    if (this.userIsCorrect)
+                    this.userIsCorrect = note.keyNumber === this.generatedNote.keyNumber;
+                    this.scoreTracker.updateScore({ actualKeyNumber: note.keyNumber, expectedKeyNumber: this.generatedNote.keyNumber, correct: this.userIsCorrect });
+                    if (this.userIsCorrect) {
                         this.generateNote();
+                    }
                 };
                 AppComponent.prototype.generateNote = function () {
                     this.generatedNote = this.noteFactory.getRandomNote();
                     this.noteCanvas.updateCanvas(this.generatedNote);
-                    console.log("Note Drawn, awaiting input:");
+                    console.log("Note generated:");
                     console.log(this.generatedNote);
                 };
                 AppComponent.prototype.begin = function () {
@@ -68,9 +71,9 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                         styleUrls: ['app/components/app/app.component.css'],
                         template: "\n        <div id=\"gameWrapper\">\n            <div id=\"canvasPanel\">\n                <score [generatedNote]=\"generatedNote\" [userIsCorrect]=\"userIsCorrect\" [gameIsStarted]=\"gameIsStarted\"></score>\n                <note-canvas [keyPressed]=\"pressed\"></note-canvas>\n                <button (click)=\"begin()\" id=\"beginButton\">{{ buttonLabel }}</button>\n            </div>\n            <piano (key-pressed)=\"keyPressed($event)\"></piano>\n        </div>\n    ",
                         directives: [piano_component_1.PianoComponent, note_canvas_component_1.NoteCanvasComponent, score_component_1.ScoreComponent],
-                        providers: [NoteFactory_1.NoteFactory]
+                        providers: [NoteFactory_1.NoteFactory, ScoreTracker_1.ScoreTracker]
                     }), 
-                    __metadata('design:paramtypes', [NoteFactory_1.NoteFactory])
+                    __metadata('design:paramtypes', [NoteFactory_1.NoteFactory, ScoreTracker_1.ScoreTracker])
                 ], AppComponent);
                 return AppComponent;
             })();
