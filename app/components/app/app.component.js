@@ -40,14 +40,15 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                     this.noteFactory = noteGenerator;
                     this.scoreTracker = tracker;
                     this.userIsCorrect = null;
-                    this.buttonLabel = "Click to begin";
+                    this.buttonLabel = "Click to start test";
                 }
                 AppComponent.prototype.keyPressed = function (noteData) {
                     var note = this.noteFactory.keyToNoteConverter(noteData);
                     this.userIsCorrect = note.keyNumber === this.generatedNote.keyNumber;
                     this.scoreTracker.updateScore({ actualKeyNumber: note.keyNumber, expectedKeyNumber: this.generatedNote.keyNumber, correct: this.userIsCorrect });
                     if (this.userIsCorrect) {
-                        this.generateNote();
+                        this.scoreTracker.updateTotalNotesPlayed();
+                        this.scoreTracker.totalNotesPlayed === this.scoreTracker.notesLimit ? this.endGame() : this.generateNote();
                     }
                 };
                 AppComponent.prototype.generateNote = function () {
@@ -56,10 +57,18 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                     console.log("Note generated:");
                     console.log(this.generatedNote);
                 };
-                AppComponent.prototype.begin = function () {
+                AppComponent.prototype.toggleGame = function () {
+                    (this.gameIsStarted) ? this.endGame() : this.startGame();
+                };
+                AppComponent.prototype.startGame = function () {
                     this.gameIsStarted = true;
-                    this.buttonLabel = "Click to stop";
+                    this.buttonLabel = "Click to end test";
                     this.generateNote();
+                };
+                AppComponent.prototype.endGame = function () {
+                    this.gameIsStarted = false;
+                    this.buttonLabel = "Click to start test";
+                    this.noteCanvas.clearCanvas();
                 };
                 __decorate([
                     core_2.ViewChild(note_canvas_component_1.NoteCanvasComponent), 
@@ -69,7 +78,7 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                     core_1.Component({
                         selector: 'piano-app',
                         styleUrls: ['app/components/app/app.component.css'],
-                        template: "\n        <div id=\"gameWrapper\">\n            <div id=\"canvasPanel\">\n                <score [generatedNote]=\"generatedNote\" [userIsCorrect]=\"userIsCorrect\" [gameIsStarted]=\"gameIsStarted\"></score>\n                <note-canvas [keyPressed]=\"pressed\"></note-canvas>\n                <button (click)=\"begin()\" id=\"beginButton\">{{ buttonLabel }}</button>\n            </div>\n            <piano (key-pressed)=\"keyPressed($event)\"></piano>\n        </div>\n    ",
+                        template: "\n        <div id=\"gameWrapper\">\n            <div id=\"canvasPanel\">\n                <score [generatedNote]=\"generatedNote\" [userIsCorrect]=\"userIsCorrect\" [gameIsStarted]=\"gameIsStarted\"></score>\n                <note-canvas [keyPressed]=\"pressed\"></note-canvas>\n                <button (click)=\"toggleGame()\" id=\"beginButton\">{{ buttonLabel }}</button>\n            </div>\n            <piano (key-pressed)=\"keyPressed($event)\"></piano>\n        </div>\n    ",
                         directives: [piano_component_1.PianoComponent, note_canvas_component_1.NoteCanvasComponent, score_component_1.ScoreComponent],
                         providers: [NoteFactory_1.NoteFactory, ScoreTracker_1.ScoreTracker]
                     }), 

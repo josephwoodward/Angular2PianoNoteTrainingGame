@@ -17,7 +17,20 @@
 }
 
 .score-wrapper__content p {
-    margin: 0 0 20px;
+
+}
+
+.tries {
+    margin: 0;
+    font-weight: bold;
+}
+
+.tries--correct {
+    color: green;
+}
+
+.tries--incorrect {
+    color: red;
 }
 
 /* Correct/Incorrect notice */

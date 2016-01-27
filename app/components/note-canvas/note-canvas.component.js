@@ -38,14 +38,17 @@ System.register(["angular2/core"], function(exports_1) {
                     };
                 };
                 NoteCanvasComponent.prototype.drawNote = function (note) {
-                    this.context.globalCompositeOperation = 'destination-over';
-                    this.context.clearRect(0, 0, 900, 500);
+                    this.clearCanvas();
                     if (note) {
                         this.drawImage('app/components/note-canvas/' + note.imageName, 450, note.yPos);
                     }
                 };
                 NoteCanvasComponent.prototype.updateCanvas = function (note) {
                     this.drawNote(note);
+                };
+                NoteCanvasComponent.prototype.clearCanvas = function () {
+                    this.context.globalCompositeOperation = 'destination-over';
+                    this.context.clearRect(0, 0, 900, 500);
                 };
                 __decorate([
                     core_3.Input(), 

@@ -45,13 +45,13 @@ System.register(["angular2/core", "angular2/common", "../../services/ScoreTracke
                             _this.incorrectTotal++;
                         }
                     });
-                    var res = this.scoreTracker.todos$.filter(function (x) {
-                        debugger;
-                        alert('here');
-                        console.log(x);
-                        return true;
-                    });
-                    alert(res);
+                    /*        var res = this.scoreTracker.todos$.filter(function(x){
+                                alert('here');
+                                return true;
+                            });
+                            alert('go!');
+                            debugger;
+                            var test = res.finally.apply();*/
                 };
                 ScoreComponent.prototype.ngOnChanges = function (changes) {
                 };
@@ -60,7 +60,7 @@ System.register(["angular2/core", "angular2/common", "../../services/ScoreTracke
                         selector: 'score',
                         styleUrls: ['app/components/score/score.component.css'],
                         directives: [common_1.NgClass, common_2.NgFor],
-                        template: "\n    <div *ngIf=\"gameIsStarted && userIsCorrect != null\" class=\"score-notice\">\n        <p class=\"score-wrapper__label score-wrapper__label--wrong\" [style.display]=\"!userIsCorrect ? 'block' : 'none'\">Incorrect, try again...</p>\n        <p class=\"score-wrapper__label score-wrapper__label--success\" [style.display]=\"userIsCorrect ? 'block' : 'none'\">Correct!</p>\n        <!--<p style=\"color: #999;\" *ngIf=\"generatedNote\">{{ generatedNote?.key }}</p>-->\n        <!--<p class=\"score-wrapper__label\" [ngClass]=\"{'score-wrapper__label&#45;&#45;success': userIsCorrect, 'score-wrapper__label&#45;&#45;wrong': !userIsCorrect }\">{{ correctMessage }}</p>-->\n    </div>\n    <div class=\"score-wrapper\">\n        <div class=\"score-wrapper__content\">\n        <p>Correct: {{ correctTotal }}</p>\n        <p>Incorrect: {{ incorrectTotal }}</p>\n\n        <ul>\n        <li *ngFor=\"#note of notes\">{{ note.correct }} {{ note.expectedKeyNumber }} = {{ note.actualKeyNumber }}</li>\n        </ul>\n\n        </div>\n    </div>\n    ",
+                        template: "\n    <div *ngIf=\"gameIsStarted && userIsCorrect != null\" class=\"score-notice\">\n        <p class=\"score-wrapper__label score-wrapper__label--wrong\" [style.display]=\"!userIsCorrect ? 'block' : 'none'\">Incorrect, try again...</p>\n        <p class=\"score-wrapper__label score-wrapper__label--success\" [style.display]=\"userIsCorrect ? 'block' : 'none'\">Correct!</p>\n        <!--<p style=\"color: #999;\" *ngIf=\"generatedNote\">{{ generatedNote?.key }}</p>-->\n        <!--<p class=\"score-wrapper__label\" [ngClass]=\"{'score-wrapper__label&#45;&#45;success': userIsCorrect, 'score-wrapper__label&#45;&#45;wrong': !userIsCorrect }\">{{ correctMessage }}</p>-->\n    </div>\n    <div class=\"score-wrapper\">\n        <div class=\"score-wrapper__content\">\n        <p>Total Notes: {{ scoreTracker.totalNotesPlayed }} of {{ scoreTracker.notesLimit }}</p>\n        <p class=\"tries tries--correct\">Correct Tries: {{ correctTotal }} of {{ scoreTracker.notesLimit }}</p>\n        <p class=\"tries tries--incorrect\">Incorrect Tries: {{ incorrectTotal }} of {{ scoreTracker.notesLimit }}</p>\n        <ul>\n            <li *ngFor=\"#note of notes\">{{ note.correct }} {{ note.expectedKeyNumber }} = {{ note.actualKeyNumber }}</li>\n        </ul>\n\n        </div>\n    </div>\n    ",
                         inputs: ['generatedNote', 'userIsCorrect', 'gameIsStarted'],
                     }), 
                     __metadata('design:paramtypes', [ScoreTracker_1.ScoreTracker])

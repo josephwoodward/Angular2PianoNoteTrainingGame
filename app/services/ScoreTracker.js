@@ -24,10 +24,16 @@ System.register(["angular2/core", "rxjs/Observable", 'rxjs/add/operator/share'],
                 function ScoreTracker() {
                     var _this = this;
                     this.score = 0;
+                    this.totalNotesPlayed = 0;
+                    // Control total number of notes per test round.
+                    this.notesLimit = 20;
                     this.result = [];
                     this.todos$ = new Observable_1.Observable(function (observer) { return _this._todosObserver = observer; }).share();
                     this._dataStore = { todos: [] };
                 }
+                ScoreTracker.prototype.updateTotalNotesPlayed = function () {
+                    this.totalNotesPlayed++;
+                };
                 ScoreTracker.prototype.updateScore = function (result) {
                     this.result.push(result);
                     this._dataStore.todos.push(result);

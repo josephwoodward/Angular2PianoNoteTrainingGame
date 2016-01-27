@@ -28,11 +28,11 @@ import 'rxjs/add/operator/filter';
     </div>
     <div class="score-wrapper">
         <div class="score-wrapper__content">
-        <p>Correct: {{ correctTotal }}</p>
-        <p>Incorrect: {{ incorrectTotal }}</p>
-
+        <p>Total Notes: {{ scoreTracker.totalNotesPlayed }} of {{ scoreTracker.notesLimit }}</p>
+        <p class="tries tries--correct">Correct Tries: {{ correctTotal }} of {{ scoreTracker.notesLimit }}</p>
+        <p class="tries tries--incorrect">Incorrect Tries: {{ incorrectTotal }} of {{ scoreTracker.notesLimit }}</p>
         <ul>
-        <li *ngFor="#note of notes">{{ note.correct }} {{ note.expectedKeyNumber }} = {{ note.actualKeyNumber }}</li>
+            <li *ngFor="#note of notes">{{ note.correct }} {{ note.expectedKeyNumber }} = {{ note.actualKeyNumber }}</li>
         </ul>
 
         </div>
@@ -42,7 +42,6 @@ import 'rxjs/add/operator/filter';
     /*providers: [ScoreTracker]*/
 })
 export class ScoreComponent implements OnChanges, OnInit {
-
 
     public correctTotal: number;
     public incorrectTotal: number;
@@ -67,13 +66,13 @@ export class ScoreComponent implements OnChanges, OnInit {
             }
         });
 
-        var res = this.scoreTracker.todos$.filter(function(x){
-            debugger;
+/*        var res = this.scoreTracker.todos$.filter(function(x){
             alert('here');
-            console.log(x);
             return true;
         });
-        alert(res);
+        alert('go!');
+        debugger;
+        var test = res.finally.apply();*/
     }
 
     ngOnChanges(changes:any) {

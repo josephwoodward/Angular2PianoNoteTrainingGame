@@ -19,7 +19,7 @@ import {ScoreTracker} from "../../services/ScoreTracker";
             <div id="canvasPanel">
                 <score [generatedNote]="generatedNote" [userIsCorrect]="userIsCorrect" [gameIsStarted]="gameIsStarted"></score>
                 <note-canvas [keyPressed]="pressed"></note-canvas>
-                <button (click)="begin()" id="beginButton">{{ buttonLabel }}</button>
+                <button (click)="toggleGame()" id="beginButton">{{ buttonLabel }}</button>
             </div>
             <piano (key-pressed)="keyPressed($event)"></piano>
         </div>
@@ -42,7 +42,7 @@ export class AppComponent {
         this.noteFactory = noteGenerator;
         this.scoreTracker = tracker;
         this.userIsCorrect = null;
-        this.buttonLabel = "Click to begin";
+        this.buttonLabel = "Click to start test";
     }
 
     keyPressed(noteData : IKeyPressed) {
@@ -52,7 +52,8 @@ export class AppComponent {
         this.scoreTracker.updateScore({ actualKeyNumber: note.keyNumber, expectedKeyNumber: this.generatedNote.keyNumber, correct: this.userIsCorrect });
 
         if (this.userIsCorrect) {
-            this.generateNote();
+            this.scoreTracker.updateTotalNotesPlayed();
+            this.scoreTracker.totalNotesPlayed === this.scoreTracker.notesLimit ? this.endGame() : this.generateNote();
         }
     }
 
@@ -63,9 +64,19 @@ export class AppComponent {
         console.log(this.generatedNote)
     }
 
-    begin(){
+    toggleGame(){
+        (this.gameIsStarted) ? this.endGame() : this.startGame();
+    }
+
+    startGame(){
         this.gameIsStarted = true;
-        this.buttonLabel = "Click to stop";
+        this.buttonLabel = "Click to end test";
         this.generateNote();
+    }
+
+    endGame() {
+        this.gameIsStarted = false;
+        this.buttonLabel = "Click to start test";
+        this.noteCanvas.clearCanvas();
     }
 }

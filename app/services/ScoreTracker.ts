@@ -9,15 +9,24 @@ export class ScoreTracker {
     todos$: Observable<Array<IUserResultItem>>;
     private _todosObserver: any;
     public score = 0;
+    public totalNotesPlayed: number = 0;
     public result: IUserResultItem[];
     private _dataStore: {
         todos: Array<IUserResultItem>
     };
 
+
+    // Control total number of notes per test round.
+    public notesLimit: number = 20;
+
     constructor(){
         this.result = [];
         this.todos$ = new Observable(observer => this._todosObserver = observer).share();
         this._dataStore = { todos: [] };
+    }
+
+    updateTotalNotesPlayed(){
+        this.totalNotesPlayed++;
     }
 
     updateScore(result: IUserResultItem){

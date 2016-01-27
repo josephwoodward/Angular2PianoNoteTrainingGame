@@ -41,8 +41,7 @@ export class NoteCanvasComponent {
     }
 
     private drawNote(note: INotePosition ){
-        this.context.globalCompositeOperation = 'destination-over';
-        this.context.clearRect(0, 0, 900, 500);
+        this.clearCanvas();
         if (note) {
             this.drawImage('app/components/note-canvas/' + note.imageName, 450, note.yPos);
         }
@@ -50,5 +49,10 @@ export class NoteCanvasComponent {
 
     public updateCanvas(note: INotePosition){
         this.drawNote(note);
+    }
+
+    public clearCanvas() {
+        this.context.globalCompositeOperation = 'destination-over';
+        this.context.clearRect(0, 0, 900, 500);
     }
 }
