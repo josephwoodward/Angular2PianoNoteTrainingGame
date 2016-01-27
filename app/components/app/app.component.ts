@@ -21,7 +21,7 @@ import {ScoreTracker} from "../../services/ScoreTracker";
                 <note-canvas [keyPressed]="pressed"></note-canvas>
                 <button (click)="toggleGame()" id="beginButton">{{ buttonLabel }}</button>
             </div>
-            <piano (key-pressed)="keyPressed($event)"></piano>
+            <piano (key-pressed)="notePlayed($event)"></piano>
         </div>
     `,
     directives: [PianoComponent, NoteCanvasComponent, ScoreComponent],
@@ -45,7 +45,7 @@ export class AppComponent {
         this.buttonLabel = "Click to start test";
     }
 
-    keyPressed(noteData : IKeyPressed) {
+    notePlayed(noteData : IKeyPressed) {
         var note = <INotePosition>this.noteFactory.keyToNoteConverter(noteData);
 
         this.userIsCorrect = note.keyNumber === this.generatedNote.keyNumber;
