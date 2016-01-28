@@ -16,7 +16,6 @@ export class PianoComponent {
     @Output("key-pressed") keyPressed = new EventEmitter();
 
     constructor(){
-
         this.pianoKeys = [
             { whiteKeyId: 16, blackKeyId: 17 }, //c
             { whiteKeyId: 18, blackKeyId: 19 },

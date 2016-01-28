@@ -39,7 +39,7 @@ export class NoteFactory implements INoteTransformer {
     }
 
     getRandomNote(){
-        var randomNumber = this.randomIntFromInterval(0, this.notePositions.length);
+        var randomNumber = this.randomIntFromInterval(0, this.notePositions.length - 1);
         return this.notePositions[randomNumber];
     }
 

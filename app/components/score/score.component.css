@@ -27,6 +27,7 @@
 
 .tries--correct {
     color: green;
+    margin-bottom: 10px;
 }
 
 .tries--incorrect {

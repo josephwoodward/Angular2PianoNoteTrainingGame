@@ -47,6 +47,7 @@ export class AppComponent {
 
     notePlayed(noteData : IKeyPressed) {
         var note = <INotePosition>this.noteFactory.keyToNoteConverter(noteData);
+        if (!note) return;
 
         this.userIsCorrect = note.keyNumber === this.generatedNote.keyNumber;
         this.scoreTracker.updateScore({ actualKeyNumber: note.keyNumber, expectedKeyNumber: this.generatedNote.keyNumber, correct: this.userIsCorrect });

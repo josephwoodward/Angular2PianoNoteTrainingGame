@@ -45,7 +45,7 @@ System.register(["angular2/core"], function(exports_1) {
                     return Math.floor(Math.random() * (max - min + 1) + min);
                 };
                 NoteFactory.prototype.getRandomNote = function () {
-                    var randomNumber = this.randomIntFromInterval(0, this.notePositions.length);
+                    var randomNumber = this.randomIntFromInterval(0, this.notePositions.length - 1);
                     return this.notePositions[randomNumber];
                 };
                 NoteFactory.prototype.generate = function (keyPosition) {

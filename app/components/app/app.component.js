@@ -44,6 +44,8 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                 }
                 AppComponent.prototype.notePlayed = function (noteData) {
                     var note = this.noteFactory.keyToNoteConverter(noteData);
+                    if (!note)
+                        return;
                     this.userIsCorrect = note.keyNumber === this.generatedNote.keyNumber;
                     this.scoreTracker.updateScore({ actualKeyNumber: note.keyNumber, expectedKeyNumber: this.generatedNote.keyNumber, correct: this.userIsCorrect });
                     if (this.userIsCorrect) {
