@@ -30,7 +30,7 @@ export class NoteFactory implements INoteTransformer {
             { key: 'a3', yPos: 285, keyNumber: 37, imageName: crotchetDown },
             { key: 'g3', yPos: 297, keyNumber: 35, imageName: crotchetDown },
             { key: 'f3', yPos: 310, keyNumber: 33, imageName: crotchetDown },
-            { key: 'e3', yPos: 323, keyNumber: 32, imageName: crotchetDown },
+            { key: 'e3', yPos: 323, keyNumber: 32, imageName: crotchetDown }
         ];
     }
 

@@ -1,4 +1,5 @@
 System.register(["angular2/core", "../piano/piano.component", "../note-canvas/note-canvas.component", "../../services/NoteFactory", "../score/score.component", "../../services/ScoreTracker"], function(exports_1) {
+    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -87,7 +88,7 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                     __metadata('design:paramtypes', [NoteFactory_1.NoteFactory, ScoreTracker_1.ScoreTracker])
                 ], AppComponent);
                 return AppComponent;
-            })();
+            }());
             exports_1("AppComponent", AppComponent);
         }
     }

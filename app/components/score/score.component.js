@@ -1,4 +1,5 @@
 System.register(["angular2/core", "angular2/common", "../../services/ScoreTracker", 'rxjs/add/operator/filter'], function(exports_1) {
+    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -67,7 +68,7 @@ System.register(["angular2/core", "angular2/common", "../../services/ScoreTracke
                     __metadata('design:paramtypes', [ScoreTracker_1.ScoreTracker])
                 ], ScoreComponent);
                 return ScoreComponent;
-            })();
+            }());
             exports_1("ScoreComponent", ScoreComponent);
         }
     }

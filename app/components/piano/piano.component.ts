@@ -3,6 +3,7 @@ import {ViewEncapsulation} from "angular2/core";
 import {IPianoKey} from "../../contracts/IPianoKey";
 import {EventEmitter} from "angular2/core";
 import {Output} from "angular2/core";
+import {ElementRef} from "angular2/core";
 
 @Component({
     selector: 'piano',
@@ -16,6 +17,7 @@ export class PianoComponent {
     @Output("key-pressed") keyPressed = new EventEmitter();
 
     constructor(){
+
         this.pianoKeys = [
             { whiteKeyId: 16, blackKeyId: 17 }, //c
             { whiteKeyId: 18, blackKeyId: 19 },
@@ -49,7 +51,9 @@ export class PianoComponent {
         ];
     }
 
-    keyPress(keyNumber: number, keyType: string) {
-        this.keyPressed.emit({ key : keyNumber, keyType: keyType });
+    keyPress(keyNumber: number) {
+        this.keyPressed.emit({ key : keyNumber });
+        var audio = new Audio('app/components/piano/sounds/' + keyNumber + '.wav');
+        audio.play();
     }
 }

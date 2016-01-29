@@ -1,4 +1,5 @@
 System.register(["angular2/core"], function(exports_1) {
+    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +39,7 @@ System.register(["angular2/core"], function(exports_1) {
                         { key: 'a3', yPos: 285, keyNumber: 37, imageName: crotchetDown },
                         { key: 'g3', yPos: 297, keyNumber: 35, imageName: crotchetDown },
                         { key: 'f3', yPos: 310, keyNumber: 33, imageName: crotchetDown },
-                        { key: 'e3', yPos: 323, keyNumber: 32, imageName: crotchetDown },
+                        { key: 'e3', yPos: 323, keyNumber: 32, imageName: crotchetDown }
                     ];
                 }
                 NoteFactory.prototype.randomIntFromInterval = function (min, max) {
@@ -70,7 +71,7 @@ System.register(["angular2/core"], function(exports_1) {
                     __metadata('design:paramtypes', [])
                 ], NoteFactory);
                 return NoteFactory;
-            })();
+            }());
             exports_1("NoteFactory", NoteFactory);
         }
     }
