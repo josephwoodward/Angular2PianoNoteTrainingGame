@@ -46,15 +46,20 @@ export class AppComponent {
     }
 
     notePlayed(noteData : IKeyPressed) {
+        if (!this.gameIsStarted) return;
+
         var note = <INotePosition>this.noteFactory.keyToNoteConverter(noteData);
         if (!note) return;
 
         this.userIsCorrect = note.keyNumber === this.generatedNote.keyNumber;
         this.scoreTracker.updateScore({ actualKeyNumber: note.keyNumber, expectedKeyNumber: this.generatedNote.keyNumber, correct: this.userIsCorrect });
 
-        if (this.userIsCorrect) {
-            this.scoreTracker.updateTotalNotesPlayed();
-            this.scoreTracker.totalNotesPlayed === this.scoreTracker.notesLimit ? this.endGame() : this.generateNote();
+        this.scoreTracker.updateTotalNotesPlayed();
+
+        if (this.scoreTracker.totalNotesPlayed === this.scoreTracker.notesLimit) {
+            this.endGame();
+        } else {
+            this.generateNote();
         }
     }
 
@@ -73,6 +78,7 @@ export class AppComponent {
         this.gameIsStarted = true;
         this.buttonLabel = "Click to end test";
         this.generateNote();
+        this.scoreTracker.resetScore();
     }
 
     endGame() {

@@ -44,14 +44,19 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                     this.buttonLabel = "Click to start test";
                 }
                 AppComponent.prototype.notePlayed = function (noteData) {
+                    if (!this.gameIsStarted)
+                        return;
                     var note = this.noteFactory.keyToNoteConverter(noteData);
                     if (!note)
                         return;
                     this.userIsCorrect = note.keyNumber === this.generatedNote.keyNumber;
                     this.scoreTracker.updateScore({ actualKeyNumber: note.keyNumber, expectedKeyNumber: this.generatedNote.keyNumber, correct: this.userIsCorrect });
-                    if (this.userIsCorrect) {
-                        this.scoreTracker.updateTotalNotesPlayed();
-                        this.scoreTracker.totalNotesPlayed === this.scoreTracker.notesLimit ? this.endGame() : this.generateNote();
+                    this.scoreTracker.updateTotalNotesPlayed();
+                    if (this.scoreTracker.totalNotesPlayed === this.scoreTracker.notesLimit) {
+                        this.endGame();
+                    }
+                    else {
+                        this.generateNote();
                     }
                 };
                 AppComponent.prototype.generateNote = function () {
@@ -67,6 +72,7 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                     this.gameIsStarted = true;
                     this.buttonLabel = "Click to end test";
                     this.generateNote();
+                    this.scoreTracker.resetScore();
                 };
                 AppComponent.prototype.endGame = function () {
                     this.gameIsStarted = false;
