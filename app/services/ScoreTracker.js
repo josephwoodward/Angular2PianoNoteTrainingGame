@@ -26,6 +26,8 @@ System.register(["angular2/core", "rxjs/Observable", 'rxjs/add/operator/share'],
                     var _this = this;
                     this.score = 0;
                     this.totalNotesPlayed = 0;
+                    this.totalCorrect = 0;
+                    this.totalIncorrect = 0;
                     // Control total number of notes per test round.
                     this.notesLimit = 5;
                     this.result = [];
@@ -39,11 +41,17 @@ System.register(["angular2/core", "rxjs/Observable", 'rxjs/add/operator/share'],
                     this.result.push(result);
                     this._dataStore.todos.push(result);
                     this._todosObserver.next(this._dataStore.todos);
+                    (result.correct) ? this.totalCorrect++ : this.totalIncorrect++;
                 };
                 ScoreTracker.prototype.resetScore = function () {
                     this.totalNotesPlayed = 0;
+                    this.totalCorrect = 0;
+                    this.totalIncorrect = 0;
                     this.result = [];
                     this._dataStore = { todos: [] };
+                };
+                ScoreTracker.prototype.notesLimitReached = function () {
+                    return this.totalNotesPlayed === this.notesLimit;
                 };
                 ScoreTracker = __decorate([
                     core_1.Injectable(), 

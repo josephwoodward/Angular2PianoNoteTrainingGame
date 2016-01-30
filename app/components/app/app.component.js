@@ -52,27 +52,22 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                     this.userIsCorrect = note.keyNumber === this.generatedNote.keyNumber;
                     this.scoreTracker.updateScore({ actualKeyNumber: note.keyNumber, expectedKeyNumber: this.generatedNote.keyNumber, correct: this.userIsCorrect });
                     this.scoreTracker.updateTotalNotesPlayed();
-                    if (this.scoreTracker.totalNotesPlayed === this.scoreTracker.notesLimit) {
-                        this.endGame();
-                    }
-                    else {
-                        this.generateNote();
-                    }
+                    this.scoreTracker.notesLimitReached() ? this.endGame() : this.generateNote();
                 };
                 AppComponent.prototype.generateNote = function () {
                     this.generatedNote = this.noteFactory.getRandomNote();
                     this.noteCanvas.updateCanvas(this.generatedNote);
-                    console.log("Note generated:");
-                    console.log(this.generatedNote);
                 };
                 AppComponent.prototype.toggleGame = function () {
                     (this.gameIsStarted) ? this.endGame() : this.startGame();
                 };
                 AppComponent.prototype.startGame = function () {
                     this.gameIsStarted = true;
+                    this.userIsCorrect = null;
                     this.buttonLabel = "Click to end test";
                     this.generateNote();
                     this.scoreTracker.resetScore();
+                    this.scoreComponent.resetScore();
                 };
                 AppComponent.prototype.endGame = function () {
                     this.gameIsStarted = false;
@@ -83,6 +78,10 @@ System.register(["angular2/core", "../piano/piano.component", "../note-canvas/no
                     core_2.ViewChild(note_canvas_component_1.NoteCanvasComponent), 
                     __metadata('design:type', note_canvas_component_1.NoteCanvasComponent)
                 ], AppComponent.prototype, "noteCanvas", void 0);
+                __decorate([
+                    core_2.ViewChild(score_component_1.ScoreComponent), 
+                    __metadata('design:type', score_component_1.ScoreComponent)
+                ], AppComponent.prototype, "scoreComponent", void 0);
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'piano-app',

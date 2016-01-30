@@ -11,10 +11,11 @@ export class ScoreTracker {
     public score = 0;
     public totalNotesPlayed: number = 0;
     public result: IUserResultItem[];
+    public totalCorrect : number = 0;
+    public totalIncorrect : number = 0;
     private _dataStore: {
         todos: Array<IUserResultItem>
     };
-
 
     // Control total number of notes per test round.
     public notesLimit: number = 5;
@@ -33,11 +34,19 @@ export class ScoreTracker {
         this.result.push(result);
         this._dataStore.todos.push(result);
         this._todosObserver.next(this._dataStore.todos);
+
+        (result.correct) ? this.totalCorrect++ : this.totalIncorrect++;
     }
 
     resetScore() : void {
         this.totalNotesPlayed = 0;
+        this.totalCorrect = 0;
+        this.totalIncorrect = 0;
         this.result = [];
         this._dataStore = { todos: [] };
+    }
+
+    notesLimitReached() : boolean {
+        return this.totalNotesPlayed === this.notesLimit;
     }
 }

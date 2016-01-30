@@ -1,11 +1,7 @@
 import {Component} from "angular2/core";
 import {ElementRef} from "angular2/core";
-import {NoteFactory} from "../../services/NoteFactory";
-import {OnInit} from "angular2/core";
 import {INotePosition} from "../../contracts/INotePosition";
-import {Renderer} from "angular2/core";
 import {Input} from "angular2/core";
-import {IKeyPressed} from "../../contracts/IKeyPressed";
 
 @Component({
     selector: 'note-canvas',

@@ -1,5 +1,4 @@
 import {Component} from "angular2/core";
-import {ViewEncapsulation} from "angular2/core";
 import {PianoComponent} from "../piano/piano.component";
 import {NoteCanvasComponent} from "../note-canvas/note-canvas.component";
 import {INotePosition} from "../../contracts/INotePosition";
@@ -37,6 +36,7 @@ export class AppComponent {
     public buttonLabel: string;
 
     @ViewChild(NoteCanvasComponent) noteCanvas: NoteCanvasComponent;
+    @ViewChild(ScoreComponent) scoreComponent: ScoreComponent;
 
     constructor(private noteGenerator: NoteFactory, private tracker: ScoreTracker){
         this.noteFactory = noteGenerator;
@@ -52,22 +52,15 @@ export class AppComponent {
         if (!note) return;
 
         this.userIsCorrect = note.keyNumber === this.generatedNote.keyNumber;
+
         this.scoreTracker.updateScore({ actualKeyNumber: note.keyNumber, expectedKeyNumber: this.generatedNote.keyNumber, correct: this.userIsCorrect });
-
         this.scoreTracker.updateTotalNotesPlayed();
-
-        if (this.scoreTracker.totalNotesPlayed === this.scoreTracker.notesLimit) {
-            this.endGame();
-        } else {
-            this.generateNote();
-        }
+        this.scoreTracker.notesLimitReached() ? this.endGame() : this.generateNote();
     }
 
     private generateNote(){
         this.generatedNote = <INotePosition>this.noteFactory.getRandomNote();
         this.noteCanvas.updateCanvas(this.generatedNote);
-        console.log("Note generated:")
-        console.log(this.generatedNote)
     }
 
     toggleGame(){
@@ -76,9 +69,11 @@ export class AppComponent {
 
     startGame(){
         this.gameIsStarted = true;
+        this.userIsCorrect = null;
         this.buttonLabel = "Click to end test";
         this.generateNote();
         this.scoreTracker.resetScore();
+        this.scoreComponent.resetScore();
     }
 
     endGame() {

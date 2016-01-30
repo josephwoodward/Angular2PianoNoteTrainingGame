@@ -1,9 +1,7 @@
 import {Component} from "angular2/core";
-import {ViewEncapsulation} from "angular2/core";
 import {IPianoKey} from "../../contracts/IPianoKey";
 import {EventEmitter} from "angular2/core";
 import {Output} from "angular2/core";
-import {ElementRef} from "angular2/core";
 
 @Component({
     selector: 'piano',
