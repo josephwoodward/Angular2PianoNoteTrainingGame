@@ -1,5 +1,5 @@
 #canvasWrapper {
     width: 895px;
     height: 500px;
-    background: #fff url('app/components/note-canvas/stave_bg.png') no-repeat 10px 0;
+    background: #fff url('app/components/note-canvas/images/stave_bg.png') no-repeat 10px 0;
 }

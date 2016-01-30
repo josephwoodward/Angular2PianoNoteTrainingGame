@@ -41,7 +41,7 @@ System.register(["angular2/core"], function(exports_1) {
                 NoteCanvasComponent.prototype.drawNote = function (note) {
                     this.clearCanvas();
                     if (note) {
-                        this.drawImage('app/components/note-canvas/' + note.imageName, 450, note.yPos);
+                        this.drawImage('app/components/note-canvas/images/' + note.imageName, 450, note.yPos);
                     }
                 };
                 NoteCanvasComponent.prototype.updateCanvas = function (note) {

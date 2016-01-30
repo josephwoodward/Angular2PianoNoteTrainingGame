@@ -39,7 +39,7 @@ export class NoteCanvasComponent {
     private drawNote(note: INotePosition ){
         this.clearCanvas();
         if (note) {
-            this.drawImage('app/components/note-canvas/' + note.imageName, 450, note.yPos);
+            this.drawImage('app/components/note-canvas/images/' + note.imageName, 450, note.yPos);
         }
     }
 
