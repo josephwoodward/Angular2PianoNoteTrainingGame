@@ -21,9 +21,9 @@ import 'rxjs/add/operator/filter';
         <p>Total Notes: {{ scoreTracker.totalNotesPlayed }} of {{ scoreTracker.notesLimit }}</p>
         <p class="tries tries--correct">Correct Notes: {{ scoreTracker.totalCorrect }} of {{ scoreTracker.notesLimit }}</p>
         <p class="tries tries--incorrect">Incorrect Notes: {{ scoreTracker.totalIncorrect }} of {{ scoreTracker.notesLimit }}</p>
-        <!--<ul>
+        <ul>
             <li *ngFor="#note of notes">{{ note.correct }} {{ note.expectedKeyNumber }} = {{ note.actualKeyNumber }}</li>
-        </ul>-->
+        </ul>
         </div>
     </div>
     `,

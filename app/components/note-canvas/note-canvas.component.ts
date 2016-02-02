@@ -39,10 +39,9 @@ export class NoteCanvasComponent {
     private drawNote(note: INotePosition ){
         this.clearCanvas();
         if (note) {
-            var yPos = (note.keyNumber >= 39) ? note.yPos - 20 : note.yPos;
-            this.drawImage('app/components/note-canvas/images/' + note.imageName + '.png', 450, yPos);
+            this.drawImage('app/components/note-canvas/images/' + note.imageName + '.png', 450, note.yPos);
             if (note.type){
-                this.drawImage('app/components/note-canvas/images/' + note.type + '.png', 405, yPos);
+                this.drawImage('app/components/note-canvas/images/' + note.type + '.png', 410, note.keyNumber >= 39 && note.keyNumber <= 52 ? note.yPos + 30 : note.yPos - 30);
             }
         }
     }
