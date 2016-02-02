@@ -19,9 +19,13 @@ export class NoteFactory implements INoteTransformer {
             { key: 'd5', yPos: 126, keyNumber: 54, imageName: crotchetDown },
             { key: 'c5', yPos: 138, keyNumber: 52, imageName: crotchetDown },
             { key: 'b4', yPos: 70, keyNumber: 51, imageName: crotchetUp },
-            { key: 'a4', yPos: 83, keyNumber: 49, imageName: crotchetUp },
+            { key: 'a4', yPos: 83, keyNumber: 49, imageName: crotchetUp },*/
+            /*{ key: 'g4', yPos: 95, keyNumber: 47, imageName: crotchetUp, type: 'sharp' },
             { key: 'g4', yPos: 95, keyNumber: 47, imageName: crotchetUp },
-            { key: 'f4', yPos: 109, keyNumber: 45, imageName: crotchetUp },*/
+            { key: 'g4', yPos: 95, keyNumber: 47, imageName: crotchetUp, type: 'flat' },*/
+            { key: 'f4', yPos: 109, keyNumber: 46, imageName: crotchetUp, type: 'sharp' },
+            { key: 'f4', yPos: 109, keyNumber: 45, imageName: crotchetUp },
+            { key: 'f4', yPos: 109, keyNumber: 44, imageName: crotchetUp, type: 'flat' },
             { key: 'e4', yPos: 121, keyNumber: 45, imageName: crotchetUp, type: 'sharp' },
             { key: 'e4', yPos: 121, keyNumber: 44, imageName: crotchetUp },
             { key: 'e4', yPos: 121, keyNumber: 43, imageName: crotchetUp, type: 'flat' },
@@ -31,7 +35,7 @@ export class NoteFactory implements INoteTransformer {
             { key: 'c4', yPos: 163, keyNumber: 41, imageName: crotchetUp, type: 'sharp' },
             { key: 'c4', yPos: 163, keyNumber: 40, imageName: crotchetUp },
             { key: 'c4', yPos: 163, keyNumber: 39, imageName: crotchetUp, type: 'flat' },
-            /*{ key: 'b3', yPos: 271, keyNumber: 40, imageName: crotchetDown, type: 'sharp' },
+            { key: 'b3', yPos: 271, keyNumber: 40, imageName: crotchetDown, type: 'sharp' },
             { key: 'b3', yPos: 271, keyNumber: 39, imageName: crotchetDown },
             { key: 'b3', yPos: 271, keyNumber: 38, imageName: crotchetDown, type: 'flat' },
             { key: 'a3', yPos: 285, keyNumber: 38, imageName: crotchetDown, type: 'sharp' },
@@ -45,7 +49,7 @@ export class NoteFactory implements INoteTransformer {
             { key: 'f3', yPos: 310, keyNumber: 32, imageName: crotchetDown, type: 'flat' },
             { key: 'e3', yPos: 323, keyNumber: 33, imageName: crotchetDown, type: 'sharp' },
             { key: 'e3', yPos: 323, keyNumber: 32, imageName: crotchetDown },
-            { key: 'e3', yPos: 323, keyNumber: 31, imageName: crotchetDown, type: 'flat' }*/
+            { key: 'e3', yPos: 323, keyNumber: 31, imageName: crotchetDown, type: 'flat' }
         ];
     }
 
