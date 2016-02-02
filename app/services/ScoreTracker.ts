@@ -18,7 +18,7 @@ export class ScoreTracker {
     };
 
     // Control total number of notes per test round.
-    public notesLimit: number = 5;
+    public notesLimit: number = 20;
 
     constructor(){
         this.result = [];

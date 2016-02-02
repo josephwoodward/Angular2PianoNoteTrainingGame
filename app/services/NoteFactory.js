@@ -19,10 +19,10 @@ System.register(["angular2/core"], function(exports_1) {
         execute: function() {
             NoteFactory = (function () {
                 function NoteFactory() {
-                    var crotchetUp = "crotchet_up.png";
-                    var crotchetDown = "crotchet_down.png";
+                    var crotchetUp = "crotchet_up";
+                    var crotchetDown = "crotchet_down";
                     this.notePositions = [
-                        { key: 'g5', yPos: 86, keyNumber: 59, imageName: crotchetDown },
+                        /*{ key: 'g5', yPos: 86, keyNumber: 59, imageName: crotchetDown },
                         { key: 'f5', yPos: 100, keyNumber: 57, imageName: crotchetDown },
                         { key: 'e5', yPos: 112, keyNumber: 56, imageName: crotchetDown },
                         { key: 'd5', yPos: 126, keyNumber: 54, imageName: crotchetDown },
@@ -30,16 +30,16 @@ System.register(["angular2/core"], function(exports_1) {
                         { key: 'b4', yPos: 70, keyNumber: 51, imageName: crotchetUp },
                         { key: 'a4', yPos: 83, keyNumber: 49, imageName: crotchetUp },
                         { key: 'g4', yPos: 95, keyNumber: 47, imageName: crotchetUp },
-                        { key: 'f4', yPos: 109, keyNumber: 45, imageName: crotchetUp },
+                        { key: 'f4', yPos: 109, keyNumber: 45, imageName: crotchetUp },*/
+                        { key: 'e4', yPos: 121, keyNumber: 45, imageName: crotchetUp, type: 'sharp' },
                         { key: 'e4', yPos: 121, keyNumber: 44, imageName: crotchetUp },
+                        { key: 'e4', yPos: 121, keyNumber: 43, imageName: crotchetUp, type: 'flat' },
+                        { key: 'd4', yPos: 135, keyNumber: 43, imageName: crotchetUp, type: 'sharp' },
                         { key: 'd4', yPos: 135, keyNumber: 42, imageName: crotchetUp },
-                        { key: 'd4', yPos: 135, keyNumber: 41, imageName: crotchetUp },
+                        { key: 'd4', yPos: 135, keyNumber: 41, imageName: crotchetUp, type: 'flat' },
+                        { key: 'c4', yPos: 163, keyNumber: 41, imageName: crotchetUp, type: 'sharp' },
                         { key: 'c4', yPos: 163, keyNumber: 40, imageName: crotchetUp },
-                        { key: 'b3', yPos: 271, keyNumber: 39, imageName: crotchetDown },
-                        { key: 'a3', yPos: 285, keyNumber: 37, imageName: crotchetDown },
-                        { key: 'g3', yPos: 297, keyNumber: 35, imageName: crotchetDown },
-                        { key: 'f3', yPos: 310, keyNumber: 33, imageName: crotchetDown },
-                        { key: 'e3', yPos: 323, keyNumber: 32, imageName: crotchetDown }
+                        { key: 'c4', yPos: 163, keyNumber: 39, imageName: crotchetUp, type: 'flat' },
                     ];
                 }
                 NoteFactory.prototype.randomIntFromInterval = function (min, max) {

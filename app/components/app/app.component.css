@@ -55,3 +55,18 @@
     -ms-transition: opacity 3s ease-in-out;
     -o-transition: opacity 3s ease-in-out;
 }
+
+#appCredit {
+    text-align: right;
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+    margin: 15px 0 0;
+}
+
+#appCredit a {
+    color: rgba(255,255,255,0.2);
+}
+
+#appCredit a:hover {
+    text-decoration: none;
+}

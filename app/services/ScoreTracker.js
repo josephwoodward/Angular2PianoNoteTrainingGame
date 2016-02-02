@@ -29,7 +29,7 @@ System.register(["angular2/core", "rxjs/Observable", 'rxjs/add/operator/share'],
                     this.totalCorrect = 0;
                     this.totalIncorrect = 0;
                     // Control total number of notes per test round.
-                    this.notesLimit = 5;
+                    this.notesLimit = 20;
                     this.result = [];
                     this.todos$ = new Observable_1.Observable(function (observer) { return _this._todosObserver = observer; }).share();
                     this._dataStore = { todos: [] };

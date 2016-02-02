@@ -21,6 +21,7 @@ import {ScoreTracker} from "../../services/ScoreTracker";
                 <button (click)="toggleGame()" id="beginButton">{{ buttonLabel }}</button>
             </div>
             <piano (key-pressed)="notePlayed($event)"></piano>
+            <p id="appCredit">Created using Angular 2 by <a href="http://josephwoodward.co.uk" target="_blank">Joseph Woodward</a> - Source <a href="https://github.com/JosephWoodward/PianoNoteTrainer" target="_blank">available on GitHub</a></p>
         </div>
     `,
     directives: [PianoComponent, NoteCanvasComponent, ScoreComponent],
